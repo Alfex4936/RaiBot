@@ -42,11 +42,11 @@ run: async (client, message, args) => {
         .setTitle(personaname)
         .setThumbnail(avatarfull)
         .setDescription(stripIndents`
-        **Status** ~ ${state[personastate]}
-        **Country** ~ ${loccountrycode.toUpperCase()}
-        **Created** ~ ${moment.utc(timecreated * 1000).format('dddd, MMMM Do, YYYY')}
-        **VAC Bans** ~ ${NumberOfVACBans}
-        **Game Bans** ~ ${NumberOfGameBans}
+        **❯ Status:** ${state[personastate]}
+        **❯ Country:** ${loccountrycode.toUpperCase()}
+        **❯ Created:** ${moment.utc(timecreated * 1000).format('dddd, MMMM Do, YYYY')}
+        **❯ VAC Bans:** ${NumberOfVACBans}
+        **❯ Game Bans:** ${NumberOfGameBans}
         `)
         .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
         .setTimestamp()

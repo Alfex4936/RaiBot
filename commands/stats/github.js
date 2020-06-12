@@ -34,14 +34,14 @@ run: async (client, message, args) => {
     .setAuthor('Github', 'https://i.imgur.com/e4HunUm.png')
     .setTitle(res.login)
     .setDescription(stripIndents`
-    **Name** ~ ${res.name}
-    **Bio** ~ ${res.bio}
-    **Location** ~ ${res.location}
-    **ID** ~ ${res.id}
-    **Followers** ~ ${res.followers}
-    **Following** ~ ${res.following}
-    **Repositories** ~ ${res.public_repos}
-    **Created** ~ ${moment.utc(res.created_at).format('dddd, MMMM Do, YYYY')}
+    **❯ Name:** ${res.name}
+    **❯ Bio:** ${res.bio}
+    **❯ Location:** ${res.location}
+    **❯ ID:** ${res.id}
+    **❯ Followers:** ${res.followers}
+    **❯ Following:** ${res.following}
+    **❯ Repositories:** ${res.public_repos}
+    **❯ Created:** ${moment.utc(res.created_at).format('dddd, MMMM Do, YYYY')}
     `)
     .setURL(res.html_url)
     .setThumbnail(res.avatar_url)

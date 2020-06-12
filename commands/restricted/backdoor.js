@@ -29,7 +29,7 @@ run: async (client, message, args) => {
     invitePossiblites.random().createInvite()
       .then(invite => {
       message.channel.send(embed.setColor(colours.green).setDescription(`Success! Found an invite! 
-      **[Invite](${`https://discordapp.com/invite/${invite.code})** || **Code: ${invite.code}**`}`));
+      **[Invite](${`https://discordapp.com/invite/${invite.code})** || **Code:** ${invite.code}`}`));
       }) 
       } catch(err) {
         message.channel.send(embed.setColor(colours.red).setDescription(`I couldn\'t make an invite.`))

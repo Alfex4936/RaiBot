@@ -65,14 +65,16 @@ run: async (client, message, args) => {
         member.roles.remove(muteRole.id);
         const eEmbed = new MessageEmbed()
         .setColor(colours.green)
-        .setAuthor(`[MUTE END] ${member.user.tag}`, member.user.displayAvatarURL())
+        .setAuthor(`Mute End`)
+        .setTitle(member.user.tag)
         .setDescription(stripIndents`
-        **User** ~ ${member.user}
-        **Time** ~ ${args[1]}
-        **Reason** ~ ${reason}
-        **Moderator** ~ ${client.user}
+        **❯ User:** ${member.user}
+        **❯ Time:** ${args[1]}
+        **❯ Reason:** ${reason}
+        **❯ Moderator:** ${client.user}
         `)
         .setFooter(`${message.guild.name} Mod-Logs`, message.guild.iconURL())
+        .setThumbnail(member.user.displayAvatarURL())
         .setTimestamp()
 
 let sChannel = message.guild.channels.cache.find(ch => ch.name === 'mod-logs');
@@ -81,14 +83,16 @@ sChannel.send(eEmbed)
 
 const embed = new MessageEmbed()
 .setColor(colours.orange)
-.setAuthor(`[MUTE] ${member.user.tag}`, member.user.displayAvatarURL())
+.setAuthor(`Mute`)
+.setTitle(member.user.tag)
 .setDescription(stripIndents`
-**User** ~ ${member.user}
-**Time** ~ ${args[1]}
-**Reason** ~ ${reason}
-**Moderator** ~ ${message.author}
+**❯ User:** ${member.user}
+**❯ Time:** ${args[1]}
+**❯ Reason:** ${reason}
+**❯ Moderator:** ${message.author}
 `)
 .setFooter(`${message.guild.name} Mod-Logs`, message.guild.iconURL())
+.setThumbnail(member.user.displayAvatarURL())
 .setTimestamp()
 
 let sChannel = message.guild.channels.cache.find(ch => ch.name === 'mod-logs');

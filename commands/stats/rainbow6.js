@@ -61,31 +61,31 @@ run: async (client, message, args) => {
     .setAuthor('Rainbow Six Siege', 'https://i.imgur.com/3bKqioi.png')
     .setTitle(player.username)
     .setDescription(`Stats for the **${region}** region on **${platform}**`)
-    .addField('Basic Info', stripIndents`
-    **Level** ~ ${level} (${xp} xp)
-    **Rank** ~ ${current.name} (Max ~ ${max.name})
-    **MMR** ~ ${current.mmr}
-    **Lootbox Probability** ~ ${lootboxProbability.percent}
+    .addField('General', stripIndents`
+    **❯ Level:** ${level} (${xp} xp)
+    **❯ Rank:** ${current.name} (Max ~ ${max.name})
+    **❯ MMR:** ${current.mmr}
+    **❯ Lootbox Probability:** ${lootboxProbability.percent}
     `)
     
     .addField('PvP Stats', stripIndents`
-    **Wins** ~ ${pvp.general.wins}
-    **Losses** ~ ${pvp.general.losses}
-    **W/L** ~ ${(pvp.general.wins / pvp.general.matches * 100).toFixed(2)}%
-    **Kills** ~ ${pvp.general.kills}
-    **Deaths** ~ ${pvp.general.deaths}
-    **K/D** ~ ${(pvp.general.kills / pvp.general.deaths).toFixed(2)}%
-    **Playtime** ~ ${Math.round(pvp.general.playtime / 3600)} hours
+    **❯ Wins:** ${pvp.general.wins}
+    **❯ Losses:** ${pvp.general.losses}
+    **❯ W/L:** ${(pvp.general.wins / pvp.general.matches * 100).toFixed(2)}%
+    **❯ Kills:** ${pvp.general.kills}
+    **❯ Deaths:** ${pvp.general.deaths}
+    **❯ K/D:** ${(pvp.general.kills / pvp.general.deaths).toFixed(2)}%
+    **❯ Playtime:** ${Math.round(pvp.general.playtime / 3600)} hours
     `, true)
 
     .addField('PvE Stats', stripIndents`
-    **Wins** ~ ${pve.general.wins}
-    **Losses** ~ ${pve.general.losses}
-    **W/L** ~ ${(pve.general.wins / pve.general.matches * 100).toFixed(2)}%
-    **Kills** ~ ${pve.general.kills}
-    **Deaths** ~ ${pve.general.deaths}
-    **K/D** ~ ${(pve.general.kills / pve.general.deaths).toFixed(2)}%
-    **Playtime** ~ ${Math.round(pve.general.playtime / 3600)} hours
+    **❯ Wins:** ${pve.general.wins}
+    **❯ Losses:** ${pve.general.losses}
+    **❯ W/L:** ${(pve.general.wins / pve.general.matches * 100).toFixed(2)}%
+    **❯ Kills:** ${pve.general.kills}
+    **❯ Deaths:** ${pve.general.deaths}
+    **❯ K/D:** ${(pve.general.kills / pve.general.deaths).toFixed(2)}%
+    **❯ Playtime:** ${Math.round(pve.general.playtime / 3600)} hours
     `, true)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()

@@ -41,12 +41,12 @@ run: async (client, message, args) => {
         .setColor(colours.default)
         .setAuthor('Your profile', message.author.displayAvatarURL())
         .setDescription(stripIndents`
-        **Level** ~ ${myLevel}
-        **Next Level** ~ ${myDifference} XP needed
-        **XP** ~ ${myXp}
-        **Coins** ~ ${myCoins}
-        **Messages Sent (GLOBAL)** ~ ${myMessagesSentGlobal}
-        **Messages Sent (GUILD)** ~ ${myMessagesSentGuild}
+        **❯ Level:** ${myLevel}
+        **❯ Next Level:** ${myDifference} XP needed
+        **❯ XP:** ${myXp}
+        **❯ Coins:** ${myCoins}
+        **❯ Messages Sent (GLOBAL):** ${myMessagesSentGlobal}
+        **❯ Messages Sent (GUILD):** ${myMessagesSentGuild}
         `)
         .setThumbnail(message.author.displayAvatarURL())
         .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
@@ -76,12 +76,12 @@ run: async (client, message, args) => {
     .setColor(colours.default)
     .setAuthor(`${user.username}'s Profile`, user.displayAvatarURL())
     .setDescription(stripIndents`
-    **Level** ~ ${level}
-    **Next Level** ~ ${difference} XP needed
-    **XP** ~ ${xp}
-    **Coins** ~ ${coins}
-    **Messages Sent (GLOBAL)** ~ ${messagesSentGlobal}
-    **Messages Sent (GUILD)** ~ ${messagesSentGuild}
+    **❯ Level:** ${level}
+    **❯ Next Level:** ${difference} XP needed
+    **❯ XP:** ${xp}
+    **❯ Coins:** ${coins}
+    **❯ Messages Sent (GLOBAL):** ${messagesSentGlobal}
+    **❯ Messages Sent (GUILD):** ${messagesSentGuild}
     `)
     .setThumbnail(user.displayAvatarURL())
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())

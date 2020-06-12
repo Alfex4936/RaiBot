@@ -30,23 +30,23 @@ run: async (client, message, args) => {
     .setAuthor('Overwatch', 'https://i.imgur.com/LNbk1k0.png')
     .setTitle(stats.name)
     .setDescription(`Stats for the **${region.toUpperCase()}** region on **PC**`)
-    .addField('Basic Info', stripIndents`
-    **Level** ~ ${stats.level}
-    **Prestige** ~ ${stats.prestige}
-    **SR** ~ ${stats.ratings ? stats.ratings[0].level : '0'}
-    **Endorsement Level** ~ ${stats.endorsement}
+    .addField('General', stripIndents`
+    **❯ Level:** ${stats.level}
+    **❯ Prestige:** ${stats.prestige}
+    **❯ SR:** ${stats.ratings ? stats.ratings[0].level : '0'}
+    **❯ Endorsement Level:** ${stats.endorsement}
     `)
 
     .addField('Competitive Stats', stripIndents`
-    **Played** ~ ${stats.competitiveStats.games.played}
-    **Wins** ~ ${stats.competitiveStats.games.won}
-    **Medals Earned** ~ ${stats.competitiveStats.awards.medals}
+    **❯ Played:** ${stats.competitiveStats.games.played}
+    **❯ Wins:** ${stats.competitiveStats.games.won}
+    **❯ Medals Earned:** ${stats.competitiveStats.awards.medals}
     `, true)
     
     .addField('Quick Play Stats', stripIndents`
-    **Played** ~ ${stats.quickPlayStats.games.played}
-    **Wins** ~ ${stats.quickPlayStats.games.won}
-    **Medals Earned** ~ ${stats.quickPlayStats.awards.medals}
+    **❯ Played:** ${stats.quickPlayStats.games.played}
+    **❯ Wins:** ${stats.quickPlayStats.games.won}
+    **❯ Medals Earned:** ${stats.quickPlayStats.awards.medals}
     `, true)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()

@@ -54,34 +54,34 @@ run: async (client, message, args) => {
     .setThumbnail(message.guild.name)
     .setColor(colours.default)
     .addField('General', stripIndents`
-    **❯ Name** ~ ${message.guild.name}
-    **❯ ID** ~ ${message.guild.id}
-    **❯ Owner** ~ ${message.guild.owner}
-    **❯ Region** ~ ${regions[message.guild.region]}
-    **❯ Created** ~ ${moment.utc(message.guild.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.channel.guild.createdAt)})
-    **❯ Boost Tier** ~ ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}
-    **❯ Explicit Filter** ~ ${filterLevels[message.guild.explicitContentFilter]}
-    **❯ Verification Level** ~ ${verificationLevels[message.guild.verificationLevel]}
+    **❯ Name:** ${message.guild.name}
+    **❯ ID:** ${message.guild.id}
+    **❯ Owner:** ${message.guild.owner}
+    **❯ Region:** ${regions[message.guild.region]}
+    **❯ Created:** ${moment.utc(message.guild.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.channel.guild.createdAt)})
+    **❯ Boost Tier:** ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}
+    **❯ Explicit Filter:** ${filterLevels[message.guild.explicitContentFilter]}
+    **❯ Verification Level:** ${verificationLevels[message.guild.verificationLevel]}
     `)
 
     .addField('Stats', stripIndents`
-    **❯ Member Count** ~ ${message.guild.memberCount}
-    **❯ Bot Count** ~ ${message.guild.members.cache.filter(member => member.user.bot).size}
-    **❯ Role Count** ~ ${message.guild.roles.cache.size}
-    **❯ Channel Count** ~ ${message.guild.channels.cache.size}
-    **❯ Text Channel Count** ~ ${message.guild.channels.cache.filter(channel => channel.type === 'text').size}
-    **❯ Voice Channel Count** ~ ${message.guild.channels.cache.filter(channel => channel.type === 'voice').size}
-    **❯ Emoji Count** ~ ${message.guild.emojis.cache.size}
-    **❯ Image Emoji Count** ~ ${message.guild.emojis.cache.filter(emoji => !emoji.animated).size}
-    **❯ Animated Emoji Count** ~ ${message.guild.emojis.cache.filter(emoji => emoji.animated).size}
-    **❯ Boost Count** ~ ${message.guild.premiumSubscriptionCount || '0'}
+    **❯ Member Count:** ${message.guild.memberCount}
+    **❯ Bot Count:** ${message.guild.members.cache.filter(member => member.user.bot).size}
+    **❯ Role Count:** ${message.guild.roles.cache.size}
+    **❯ Channel Count:** ${message.guild.channels.cache.size}
+    **❯ Text Channel Count:** ${message.guild.channels.cache.filter(channel => channel.type === 'text').size}
+    **❯ Voice Channel Count:** ${message.guild.channels.cache.filter(channel => channel.type === 'voice').size}
+    **❯ Emoji Count:** ${message.guild.emojis.cache.size}
+    **❯ Image Emoji Count:** ${message.guild.emojis.cache.filter(emoji => !emoji.animated).size}
+    **❯ Animated Emoji Count:** ${message.guild.emojis.cache.filter(emoji => emoji.animated).size}
+    **❯ Boost Count:** ${message.guild.premiumSubscriptionCount || '0'}
     `, true)
 
     .addField('Presence', stripIndents`
-    **❯ Online** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'online').size}
-    **❯ Idle** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'idle').size}
-    **❯ Do Not Disturb** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'dnd').size}
-    **❯ Offline** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'offline').size}
+    **❯ Online:** ${message.guild.members.cache.filter(member => member.presence.status === 'online').size}
+    **❯ Idle:** ${message.guild.members.cache.filter(member => member.presence.status === 'idle').size}
+    **❯ Do Not Disturb:** ${message.guild.members.cache.filter(member => member.presence.status === 'dnd').size}
+    **❯ Offline:** ${message.guild.members.cache.filter(member => member.presence.status === 'offline').size}
     `, true)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setThumbnail(message.guild.iconURL())

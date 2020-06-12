@@ -74,16 +74,22 @@ if (command) {
 command = command.config
 
 const embed = new MessageEmbed()
-.setAuthor(`${prefix}${command.name} Info`, client.user.displayAvatarURL())
+.setAuthor(`Command Info`, client.user.displayAvatarURL())
+.setTitle(`${prefix}${command.name}`)
 .setColor(colours.default)
-.addField(`Command Info`, stripIndents`
-**Aliases** ~ ${command.aliases ? command.aliases.join(', ') : 'None'}
-**Category** ~ ${command.category}
-**Access** ~ ${command.access}
-**NSFW** ~ ${command.nsfw ? 'Yes' : 'No'}
-**Description** ~ ${command.description || 'No description provided'}
-**Usage** ~ ${command.usage || 'No usage'}
+.addField(`General`, stripIndents`
+**❯ Aliases:** ${command.aliases ? command.aliases.join(', ') : 'None'}
+**❯ Category:** ${command.category}
+**❯ Description:** ${command.description || 'No description provided'}
+**❯ Usage:** ${command.usage || 'No usage'}
 `)
+
+.addField(`Accessibility`, stripIndents`
+**❯ Access:** ${command.access}
+**❯ NSFW:** ${command.nsfw ? 'Yes' : 'No'}
+`)
+
+
 .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
 .setTimestamp()
 

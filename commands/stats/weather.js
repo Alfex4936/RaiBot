@@ -37,15 +37,16 @@ run: async (client, message, args) => {
 
     const embed = new MessageEmbed()
     .setColor(colour[current.skytext])
-    .setAuthor(`Weather for ${current.observationpoint}`)
+    .setAuthor(`Weather`)
+    .setTitle(current.observationpoint)
     .setDescription(current.skytext)
     .setThumbnail(current.imageUrl)
-    .addField(`Basic Info`, stripIndents`
-    **Temperature** ~ ${current.temperature}°${args[1]}
-    **Feels Like** ~ ${current.feelslike}°${args[1]}
-    **Timezone** ~ UTC${location.timezone}
-    **Humidity** ~ ${current.humidity}%
-    **Winds** ~ ${current.winddisplay}
+    .setDescription(stripIndents`
+    **❯ Temperature:** ${current.temperature}°${args[1]}
+    **❯ Feels Like:** ${current.feelslike}°${args[1]}
+    **❯ Timezone:** UTC${location.timezone}
+    **❯ Humidity:** ${current.humidity}%
+    **❯ Winds:** ${current.winddisplay}
     `)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()

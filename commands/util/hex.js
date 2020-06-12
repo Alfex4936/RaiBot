@@ -29,10 +29,10 @@ run: async (client, message, args) => {
     .setAuthor('Colour Info', `https://www.colourlovers.com/img/${args[0]}/200/200/Sminted.png`) 
     .setTitle(body.hex.value)
     .setDescription(stripIndents`
-    **RGB** ~ ${body.rgb.value}
-    **HSL** ~ ${body.hsl.value}
-    **HSV** ~ ${body.hsv.value}
-    **CMYK** ~ ${body.cmyk.value}
+    **❯ RGB:** ${body.rgb.value}
+    **❯ HSL:** ${body.hsl.value}
+    **❯ HSV:** ${body.hsv.value}
+    **❯ CMYK:** ${body.cmyk.value}
     `)
     .setThumbnail(`https://www.colourlovers.com/img/${args[0]}/200/200/Sminted.png`)
     .setURL(`http://www.thecolorapi.com/id?format=html&hex=${body.hex.clean}`)
