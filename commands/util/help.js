@@ -18,8 +18,8 @@ module.exports = {
 run: async (client, message, args) => {
 
     const ads = [
-        `Do you have a suggestion? Found a bug? Feel free to join [my server](https://discord.gg/KD457qA)`, `Do you like my commands? [Add me to your server](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)`,
-        `I also have repository on [GitHub](https://discord.gg/KD457qA)`,
+        `Do you have a suggestion? Found a bug? Feel free to join [my server](https://discord.gg/KD457qA)!`, `Do you like my commands? [Add me to your server](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)!`,
+        `I also have repository on [GitHub](https://github.com/Raiwex/RaiBot)!`,
     ]
 
     const randomAd = ads[Math.floor(Math.random() * ads.length)];
