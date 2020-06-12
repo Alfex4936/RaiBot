@@ -18,7 +18,7 @@ module.exports = {
 run: async (client, message, args) => {
 
     if (!message.member.hasPermission('KICK_MEMBERS')) return message.reply('You don\'t have permission to use this command.');
-    if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I don\'t have permission to manage roles!');
+    if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I don\'t have permission to kick members!');
 
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
     if (!member) return message.reply('Please provide an user!')

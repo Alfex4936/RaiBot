@@ -16,7 +16,7 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    if (!args[0]) return message.reply('Please provide a username!')
+    if (!args[0]) return message.reply('Please provide an username!')
 
     let url = `https://instagram.com/${args[0]}/?__a=1`
         

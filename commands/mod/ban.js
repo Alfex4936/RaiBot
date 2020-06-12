@@ -17,12 +17,12 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    if (!message.member.hasPermission('KICK_MEMBERS')) return message.reply('You don\'t have permission to use this command.');
-    if (!message.guild.me.hasPermission('KICK_MEMBERS')) return message.reply('I don\'t have permission to manage roles!');
+    if (!message.member.hasPermission('BAN_MEMBERS')) return message.reply('You don\'t have permission to use this command.');
+    if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.reply('I don\'t have permission to ban members!');
 
     const member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
     if (!member) return message.reply('Please provide an user!')
-    if (member.id === message.author.id) return message.reply('You can\'t kick yourself!')
+    if (member.id === message.author.id) return message.reply('You can\'t ban yourself!')
     if (member.id === ownerId) return message.reply('I can\'t do that, sorry!')
 
     const reason = args[1] || "No reason provided"

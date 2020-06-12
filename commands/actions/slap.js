@@ -15,7 +15,7 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-if (!message.mentions.users.first()) return message.reply('You can\'t slap the air!');
+if (!message.mentions.users.first()) return message.reply('Please provide an user!');
 
     const embed = new MessageEmbed()
     .setColor(colours.red)

@@ -17,7 +17,7 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    if (!args[0]) return message.reply('Please provide a nickname!');
+    if (!args[0]) return message.reply('Please provide an username!');
     let url = `http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=${steamToken}&vanityurl=${args}`
 
     fetch(url).then(res => res.json()).then(body => {
