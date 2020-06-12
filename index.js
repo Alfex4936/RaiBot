@@ -67,15 +67,16 @@ if (!message.author.bot) {
 
   const imEmbed = new MessageEmbed()
   .setDescription(stripIndents`
-  Thanks for inviting me!
+  Thanks for inviting me! ❤️
 
   To get started type \`${prefix}help\`.
 
-  - View commands inside category using \`${prefix}help <category>\`.
-  - View information about command using \`${prefix}help <command>\`.
-  - Setup all required text channels using \`${prefix}setup\`. *To remove these channels, trigger the command again.*
+  ❯ View commands inside category using \`${prefix}help <category>\`.
+  ❯ View information about command using \`${prefix}help <command>\`.
+  ❯ Setup all required text channels using \`${prefix}setup\`. *To remove these channels, trigger the command again.*
 
-  If you want to suggest a feature or report a bug feel free to join my [server](https://discord.gg/KD457qA) or use \`${prefix}ticket <text>\`.
+  ★ [Server](https://discord.gg/KD457qA)
+  ★ [Repository](https://github.com/Raiwex/RaiBot)
   `)
   .setColor(colours.default)
 
