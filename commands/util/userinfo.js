@@ -17,30 +17,37 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    let user = message.mentions.users.first() || message.author;
+    let member = message.mentions.members.first() || message.member;
 
     let botYesNo = {
         'false': 'No',
         'true': 'Yes'
     }
+
+    let roles = member.roles.cache.sort((a, b) => b.position - a.position).map(role => role.toString()).slice(0, -1);
     
     const embed = new MessageEmbed()
-    .setAuthor(`${user.username} Info`, user.displayAvatarURL())
+    .setAuthor(`User Info`)
+    .setTitle(member.user.tag)
     .setColor(colours.default)
-    .addField('Basic Info', stripIndents`
-    **Nickname** ~ ${user.username}
-    **Discriminator** ~ ${user.discriminator}
-    **ID** ~ ${user.id}
-    **Registered** ~ ${moment.utc(message.guild.members.cache.get(user.id).user.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.guild.members.cache.get(user.id).user.createdAt)})
-    **Joined** ~ ${moment.utc(message.guild.members.cache.get(user.id).joinedAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.guild.members.cache.get(user.id).joinedAt)})
+    .addField('User', stripIndents`
+    **❯ Username** ~ ${member.user.username}
+    **❯ Discriminator** ~ ${member.user.discriminator}
+    **❯ ID** ~ ${member.user.id}
+    **❯ Joined Discord** ~ ${moment.utc(message.guild.members.cache.get(member.user.id).user.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.guild.members.cache.get(member.user.id).user.createdAt)})
+    **❯ Status** ~ ${member.user.presence.status.charAt(0).toUpperCase() + member.user.presence.status.slice(1).toLowerCase()}
+    **❯ Game** ~ ${member.user.presence.game ? user.presence.game.name : 'Not playing a game'}
+    **❯ Bot** ~ ${botYesNo[member.user.bot]}
     `)
 
-    .addField('Advanced Info', stripIndents`
-    **Status** ~ ${user.presence.status.charAt(0).toUpperCase() +user.presence.status.slice(1).toLowerCase()}
-    **Game** ~ ${user.presence.game ? user.presence.game.name : 'None'}
-    **Bot** ~ ${botYesNo[user.bot]}
+    .addField('Member', stripIndents`
+    **❯ Joined Server** ~ ${moment.utc(message.guild.members.cache.get(member.user.id).joinedAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.guild.members.cache.get(member.user.id).joinedAt)})
+    **❯ Highest Role** ~ ${member.roles.highest.id === message.guild.id ? 'None' : member.roles.highest.name}
+    **❯ Hoist Role** ~ ${member.roles.hoist ? member.roles.hoist.name : 'None'}
+    **❯ Roles [${roles.length}]** ~ ${roles.join(', ')}
     `)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
+    .setThumbnail(member.user.displayAvatarURL())
     .setTimestamp()
 
 message.channel.send(embed);

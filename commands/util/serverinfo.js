@@ -17,48 +17,74 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    let region = {
-        'brazil': ':flag_br: Brazil',
-        'eu-central': ':flag_eu: Central Europe',
-        'europe': ':flag_eu: Europe',
-        'singapore': ':flag_sg: Singapore',
-        'us-central': ':flag_us: U.S. Central',
-        'sydney': ':flag_au: Sydney',
-        'us-east': ':flag_us: U.S. East',
-        'us-south': ':flag_us: U.S. South',
-        'us-west': ':flag_us: U.S. West',
-        'eu-west': ':flag_eu: Western Europe',
-        'vip-us-east': ':flag_us: VIP U.S. East',
-        'london': ':flag_gb: London',
-        'amsterdam': ':flag_nl: Amsterdam',
-        'hongkong': ':flag_hk: Hong Kong',
-        'russia': ':flag_ru: Russia',
-        'southafrica': ':flag_za:  South Africa'
+    let roles = message.guild.roles.cache.sort((a, b ) => b.position - a.position).map(role => role.toString())
+
+    let filterLevels = {
+        DISABLED: 'Off',
+        MEMBERS_WITHOUT_ROLES: 'No Role',
+        ALL_MEMBERS: 'Everyone'
+    };
+    
+    let verificationLevels = {
+        NONE: 'None',
+        LOW: 'Low',
+        MEDIUM: 'Medium',
+        HIGH: '(╯°□°）╯︵ ┻━┻',
+        VERY_HIGH: '┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻'
+    };
+
+    let regions = {
+        brazil: 'Brazil',
+        europe: 'Europe',
+        hongkong: 'Hong Kong',
+        india: 'India',
+        japan: 'Japan',
+        russia: 'Russia',
+        singapore: 'Singapore',
+        southafrica: 'South Africa',
+        sydney: 'Sydney',
+        'us-central': 'US Central',
+        'us-east': 'US East',
+        'us-west': 'US West',
+        'us-south': 'US South'
     };
 
     const embed = new MessageEmbed()
-    .setAuthor(`${message.guild.name} Info`, message.guild.iconURL())
+    .setAuthor(`Server Info`)
+    .setThumbnail(message.guild.name)
     .setColor(colours.default)
-    .addField('Basic Info', stripIndents`
-    **Name** ~ ${message.guild.name}
-    **ID** ~ ${message.guild.id}
-    **Owner** ~ ${message.guild.owner}
-    **Created** ~ ${moment.utc(message.guild.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.channel.guild.createdAt)})
-    `)
-
-    .addField('Advanced Info', stripIndents`
-    **Region** ~ ${region[message.guild.region]}
-    **Verification Level** ~ ${message.guild.verificationLevel.charAt(0).toUpperCase() + message.guild.verificationLevel.slice(1).toLowerCase()}
+    .addField('General', stripIndents`
+    **❯ Name** ~ ${message.guild.name}
+    **❯ ID** ~ ${message.guild.id}
+    **❯ Owner** ~ ${message.guild.owner}
+    **❯ Region** ~ ${regions[message.guild.region]}
+    **❯ Created** ~ ${moment.utc(message.guild.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.channel.guild.createdAt)})
+    **❯ Boost Tier** ~ ${message.guild.premiumTier ? `Tier ${message.guild.premiumTier}` : 'None'}
+    **❯ Explicit Filter** ~ ${filterLevels[message.guild.explicitContentFilter]}
+    **❯ Verification Level** ~ ${verificationLevels[message.guild.verificationLevel]}
     `)
 
     .addField('Stats', stripIndents`
-    **Total Members** ~ ${message.guild.memberCount}
-    **Total Bots** ~ ${message.guild.members.cache.filter(member => member.user.bot).size}
-    **Total Roles** ~ ${message.guild.roles.cache.size}
-    **Total Channels** ~ ${message.guild.channels.cache.size}
-    **Total Members** ~ ${message.guild.memberCount}
-    `)
+    **❯ Member Count** ~ ${message.guild.memberCount}
+    **❯ Bot Count** ~ ${message.guild.members.cache.filter(member => member.user.bot).size}
+    **❯ Role Count** ~ ${message.guild.roles.cache.size}
+    **❯ Channel Count** ~ ${message.guild.channels.cache.size}
+    **❯ Text Channel Count** ~ ${message.guild.channels.cache.filter(channel => channel.type === 'text').size}
+    **❯ Voice Channel Count** ~ ${message.guild.channels.cache.filter(channel => channel.type === 'voice').size}
+    **❯ Emoji Count** ~ ${message.guild.emojis.cache.size}
+    **❯ Image Emoji Count** ~ ${message.guild.emojis.cache.filter(emoji => !emoji.animated).size}
+    **❯ Animated Emoji Count** ~ ${message.guild.emojis.cache.filter(emoji => emoji.animated).size}
+    **❯ Boost Count** ~ ${message.guild.premiumSubscriptionCount || '0'}
+    `, true)
+
+    .addField('Presence', stripIndents`
+    **❯ Online** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'online').size}
+    **❯ Idle** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'idle').size}
+    **❯ Do Not Disturb** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'dnd').size}
+    **❯ Offline** ~ ${message.guild.members.cache.filter(member => member.presence.status === 'offline').size}
+    `, true)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
+    .setThumbnail(message.guild.iconURL())
     .setTimestamp()
 
 message.channel.send(embed);
