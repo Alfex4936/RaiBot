@@ -8,6 +8,7 @@ Procfile
 launch-bot.bat
 launch-music.bat
 launch.bat
+copy.bat
 package-lock.json
 lavalink
 logs

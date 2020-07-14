@@ -15,7 +15,7 @@ module.exports = {
         return `${days.padStart(1, `0`)} days, ${hrs.padStart(2, `0`)} hours, ${min.padStart(2, `0`)} minutes, ${sec.padStart(2, `0`)} seconds.`
     },
 
-    contains: function(target, pattern){
+    contains: function(target, pattern) {
         var value = 0;
         pattern.forEach(function(word){
           value = value + target.includes(word);
@@ -37,6 +37,10 @@ module.exports = {
                 }
             }).join(' ');
         }
+    },
+
+    capitalizeFirst: function(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
 }

@@ -38,5 +38,11 @@
     "request": "^2.88.0",
     "wait": "^0.1.0",
     "weather-js": "^2.0.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Raiwex/RaiBot/issues"
+  },
+  "homepage": "https://github.com/Raiwex/RaiBot#readme",
+  "devDependencies": {},
+  "license": "ISC"
 }
