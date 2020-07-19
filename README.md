@@ -32,7 +32,7 @@ I won't mind if you take some code to learn or improve but please don't be a ski
 
 ## Invite
 - [Server](https://discord.gg/KD457qA)
-- [Invite](https://discordapp.com/api/oauth2/authorize?client_id=278305350804045834&permissions=104721601&scope=bot)
+- [Invite](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)
 
 ## Fun Information
 - 70+ commands
