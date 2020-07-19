@@ -6,8 +6,6 @@
 [![Discord.js](https://img.shields.io/npm/v/discord.js?label=discord.js)](https://discord.js.org/#/)
 [![CodeFactor](https://www.codefactor.io/repository/github/raiwex/raibot/badge)](https://www.codefactor.io/repository/github/raiwex/raibot)
 [![Twitch](https://img.shields.io/twitch/status/raiwexoxo)](https://www.twitch.tv/raiwexoxo)
-[![Repo Size](https://img.shields.io/github/repo-size/Raiwex/RaiBot)](https://github.com/Raiwex/RaiBot)
-[![Commit Activity](https://img.shields.io/github/commit-activity/m/Raiwex/RaiBot)](https://github.com/Raiwex/RaiBot/commits?author=Raiwex)
 
 Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* using *[Discord.js](https://discord.js.org/#/)* library.
 
@@ -38,5 +36,5 @@ I won't mind if you take some code to learn or improve but please don't be a ski
 
 ## Fun Information
 - 70+ commands
-- 4000 lines of code
+- 4000+ lines of code
 - Created January 19th 2020
