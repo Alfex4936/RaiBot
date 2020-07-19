@@ -1,9 +1,8 @@
 const { token, prefix } = require('./config.json');
-const { Client, Collection, MessageEmbed, MessageCollector } = require('discord.js');
+const { Client, Collection, MessageEmbed } = require('discord.js');
 const client = new Client()
 const moment = require('moment');
 const colours = require('./colours.json');
-const { writeFile } = require('fs');
 const { stripIndents } = require('common-tags');
 const sqlite = require('sqlite3').verbose();
 const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
@@ -95,7 +94,7 @@ if (!message.author.bot) {
       let currentCoinAmt = row.coins
       if (coinAmt === baseAmt) {
         db.run('UPDATE coins SET coins = ? WHERE userid = ?', [currentCoinAmt + coinAmt, userid])
-        };
+        }
 }
 })
 }

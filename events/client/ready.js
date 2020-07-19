@@ -1,7 +1,6 @@
 const { prefix, nodes } = require('../../config.json');
-const { version } = require('../../package.json');
 const moment = require('moment');
-const { ErelaClient, Utils } = require('erela.js');
+const { ErelaClient } = require('erela.js');
 const sqlite = require('sqlite3').verbose();
 
 module.exports = client => {
@@ -20,7 +19,7 @@ module.exports = client => {
         player.textChannel.send('Queue has ended.')
         return client.music.players.destroy(player.guild.id)
     })
-    .on('trackStart', ({textChannel}, {title, duration}) => textChannel.send(`Now playing \`${title}\``))
+    .on('trackStart', ({textChannel}, {title}) => textChannel.send(`Now playing \`${title}\``))
 
     client.levels = new Map()
     .set('none', 0.0)
