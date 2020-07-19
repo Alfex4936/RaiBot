@@ -9,8 +9,6 @@
 
 Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* using *[Discord.js](https://discord.js.org/#/)* library.
 
-I won't mind if you take some code to learn or improve but please don't be a skid.
-
 # Content
 - [Copyright](#copyright)
 - [Features](#features)
@@ -36,5 +34,5 @@ I won't mind if you take some code to learn or improve but please don't be a ski
 
 ## Fun Information
 - 70+ commands
-- 4000+ lines of code
+- 4000+ lines of JavaScript code
 - Created January 19th 2020
