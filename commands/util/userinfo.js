@@ -3,7 +3,7 @@ const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
 const moment = require('moment');
 const { stripIndents } = require('common-tags');
-const { checkDays, capitalizeFirst } = require('../../functions.js');
+const { checkDays, capitaliseFirst } = require('../../functions.js');
 
 module.exports = {
     config: {
@@ -35,7 +35,7 @@ run: async (client, message, args) => {
     **❯ Discriminator:** ${member.user.discriminator}
     **❯ ID:** ${member.user.id}
     **❯ Joined Discord:** ${moment.utc(message.guild.members.cache.get(member.user.id).user.createdAt).format('dddd, MMMM Do, YYYY')} (${checkDays(message.guild.members.cache.get(member.user.id).user.createdAt)})
-    **❯ Status:** ${capitalizeFirst(member.user.presence.status)}
+    **❯ Status:** ${capitaliseFirst(member.user.presence.status)}
     **❯ Game:** ${member.user.presence.game ? user.presence.game.name : 'Not playing a game'}
     **❯ Bot:** ${botYesNo[member.user.bot]}
     `)

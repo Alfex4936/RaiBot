@@ -3,7 +3,7 @@ const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
 const db = require('quick.db');
 const ms = require('ms');
-const { capitalizeFirst } = require('../../functions.js');
+const { capitaliseFirst } = require('../../functions.js');
 
 module.exports = {
     config: {
@@ -39,7 +39,7 @@ run: async (client, message, args) => {
     const embed = new MessageEmbed()
     .setAuthor(`Work Reward`, message.author.displayAvatarURL())
     .setColor(colours.green)
-    .setDescription(`${message.author} worked as **${capitalizeFirst(randomJob)}** and earned **${amount}** coins.`)
+    .setDescription(`${message.author} worked as **${capitaliseFirst(randomJob)}** and earned **${amount}** coins.`)
 
 message.channel.send(embed)
     }

@@ -39,8 +39,16 @@ module.exports = {
         }
     },
 
-    capitalizeFirst: function(string) {
+    capitaliseFirst: function(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+
+    randomNumber: function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    },
+
+    isNumeric: function(num) {
+        return !isNaN(num)
     }
 
 }

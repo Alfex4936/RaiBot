@@ -3,7 +3,7 @@ const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
 const { readdirSync } = require('fs');
 const { stripIndents } = require('common-tags');
-const { contains, pad, capitalizeFirst } = require('../../functions.js');
+const { contains, pad, capitaliseFirst } = require('../../functions.js');
 
 module.exports = {
     config: {
@@ -85,7 +85,7 @@ const embed = new MessageEmbed()
 `)
 
 .addField(`Accessibility`, stripIndents`
-**❯ Access:** ${capitalizeFirst(command.access)}
+**❯ Access:** ${capitaliseFirst(command.access)}
 **❯ NSFW:** ${command.nsfw ? 'Yes' : 'No'}
 `)
 

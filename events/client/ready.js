@@ -4,9 +4,9 @@ const moment = require('moment');
 const { ErelaClient, Utils } = require('erela.js');
 
 module.exports = client => {
-    console.log(`[${moment().format('M/D/YYYY h:mm a')}] ${client.user.username} v${version} is online`);
+    console.log(`[${moment().format('M/D/YYYY h:mm a')}] ${client.user.username} is online`);
 
-    client.user.setActivity(`${prefix}help || v${version}`, { type: 'PLAYING'})
+    client.user.setActivity(`${prefix}help`, { type: 'PLAYING'})
 
     client.music = new ErelaClient(client, nodes)
     .on('nodeError', console.log)
