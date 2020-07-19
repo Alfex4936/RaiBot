@@ -5,7 +5,8 @@ const moment = require('moment');
 const colours = require('./colours.json');
 const { writeFile } = require('fs');
 const { stripIndents } = require('common-tags');
-const db = require('quick.db');
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
 
 // Login
 
@@ -22,45 +23,88 @@ client.on('message', message => {
 
 // Message Counter
 
-db.add(`globalMessages_${message.author.id}`, 1)
-db.add(`guildMessages_${message.guild.id}_${message.author.id}`, 1)
+let username = message.author.tag;
+let userid = message.author.id;
 
-// Message Listener
-
-console.log(`[${moment().format('LT')}] ${message.author.tag} | ${message.guild.name} ~ ${message.content}`)
+let msgQuery = 'SELECT * FROM messages WHERE userid = ?';
+db.get(msgQuery, [userid], (err, row) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    if (row === undefined) {
+      let insertdata = db.prepare('INSERT INTO messages VALUES(?,?,?)');
+      insertdata.run(username, userid, 1)
+      return;
+    } else {
+      let currentMsg = row.global
+      db.run('UPDATE messages SET global = ? WHERE userid = ?', [currentMsg + 1, userid])
+    }
 
 // XP System
 
 if (!message.author.bot) {
 
   let xpAdd = Math.floor(Math.random() * 8) + 10;
-  
-  db.add(`xp_${message.author.id}`, xpAdd)
-  let curXp =  db.fetch(`xp_${message.author.id}`)
-  let curLvl = db.fetch(`level_${message.author.id}`)
-  let nxtLvl = db.fetch(`level_${message.author.id}`) * 500;
-  
-  if (nxtLvl <= db.fetch(`xp_${message.author.id}`)) {
-    db.add(`level_${message.author.id}`, 1)
-    const lvlEmbed = new MessageEmbed()
-    .setTitle(`Congrats, ${message.author.username}! You are now level ${curLvl + 1}.`)
-    .setColor(colours.lime)
-    message.channel.send(lvlEmbed)
-  }
+
+  let xpQuery = 'SELECT * FROM xp WHERE userid = ?';
+  db.get(xpQuery, [userid], (err, row) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    if (row === undefined) {
+      let insertdata = db.prepare('INSERT INTO xp VALUES(?,?,?,?)');
+      insertdata.run(username, userid, 1, 1)
+      return;
+    } else {
+      let currentXp = row.xp
+      let currentLvl = row.level
+      let nxtLvl = row.level * 500;
+      db.run('UPDATE xp SET xp = ? WHERE userid = ?', [currentXp + xpAdd, userid])
+
+      if (nxtLvl <= currentXp) {
+        db.run('UPDATE xp SET level = ? WHERE userid = ?', [currentLvl + 1, userid])
+        const lvlEmbed = new MessageEmbed()
+        .setTitle(`Congrats, ${message.author.username}! You are now level ${currentLvl + 1}.`)
+        .setColor(colours.lime)
+        message.channel.send(lvlEmbed)
+      }
+}
+})
 }
 
 // Coin System
 
 if (!message.author.bot) {
 
-  let coinAmt = Math.floor(Math.random() * 100) + 1;
-  let baseAmt = Math.floor(Math.random() * 100) + 1;
+  let coinAmt = Math.floor(Math.random() * 10) + 1;
+  let baseAmt = Math.floor(Math.random() * 10) + 1;
 
-  if (coinAmt === baseAmt) {
-    db.add(`coins_${message.author.id}`, coinAmt / 2)
-    message.channel.send(`Congrats, ${message.author}! **${coinAmt}** coins were added to your balance.`)
-    };
-  }
+  let coinsQuery = 'SELECT * FROM coins WHERE userid = ?';
+  db.get(coinsQuery, [userid], (err, row) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    if (row === undefined) {
+      let insertdata = db.prepare('INSERT INTO coins VALUES(?,?,?)');
+      insertdata.run(username, userid, 0)
+      return;
+    } else {
+      let currentCoinAmt = row.coins
+      if (coinAmt === baseAmt) {
+        db.run('UPDATE coins SET coins = ? WHERE userid = ?', [currentCoinAmt + coinAmt, userid])
+        };
+}
+})
+}
+});
+
+// Message Listener
+
+console.log(`[${moment().format('LT')}] ${message.author.tag} | ${message.guild.name} ~ ${message.content}`)
+
 });
 
 // Invite Message

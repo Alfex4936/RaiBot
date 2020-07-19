@@ -1,7 +1,8 @@
 const { prefix } = require('../../config.json');
 const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
-const db = require('quick.db');
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
 
 module.exports = {
     config: {
@@ -14,25 +15,39 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-    
-    let coins = await db.fetch(`coins_${message.author.id}`)
 
-    if (!coins) return message.reply('You don\'t have any coins!')
+    let amount = Number(args[1]);
 
-    let pUser = message.mentions.users.first();
     if (!message.mentions.users.first()) return message.reply('Please provide an user!')
+    if (!amount) return message.reply('Please provide an amount of coins!')
 
-    if (!args[1]) return message.reply('Please provide an amount of coins!')
+    let myUserId = message.author.id;
+    let myUsername = message.author.tag;
+    let pUser = message.mentions.users.first()
+    let pUserId = pUser.id
+    let pUsername = pUser.tag
+    let query = 'SELECT * FROM coins WHERE userid = ?';
+    db.get(query, [myUserId], (err, row) => {
+      if (err) {
+          console.log(err);
+      }
+      let myCoins = row.coins
 
-    let pCoins = db.fetch(`coins_${pUser.id}`)
-    let sCoins = db.fetch(`coins_${message.author.id}`)
+    db.get(query, [pUserId], (err, row) => {
+      if (err) {
+          console.log(err);
+      }
+      let pCoins = row.coins
 
-    if (sCoins < args[0]) return message.reply('Not enough coins there!')
+    if (!myCoins) return message.reply('You don\'t have any coins!')
+    if (myCoins < args[0]) return message.reply('Not enough coins there!')
 
-    db.subtract(`coins_${message.author.id}`, args[1])
-    db.add(`coins_${pUser.id}`, args[1])
+    db.run('UPDATE coins SET coins = ? WHERE userid = ?', [myCoins - amount, myUserId])
+    db.run('UPDATE coins SET coins = ? WHERE userid = ?', [pCoins + amount, pUserId])
 
-message.channel.send(`${message.author} has given ${pUser} **${args[1]}** coins.`);
+message.channel.send(`${message.author} has given ${pUser} **${amount}** coins.`);
+});
+});
 
 }
 }

@@ -1,8 +1,5 @@
 config.json
-xp.json
-coins.json
 application.yml
-impact.ttf
 Lavalink.jar
 Procfile
 launch-bot.bat
@@ -12,5 +9,5 @@ copy.bat
 package-lock.json
 lavalink
 logs
-json.sqlite
+raibot.db
 node_modules

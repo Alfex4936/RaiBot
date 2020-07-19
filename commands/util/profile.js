@@ -1,8 +1,9 @@
 const { prefix } = require('../../config.json');
 const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
-const db = require('quick.db');
 const { stripIndents } = require('common-tags');
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
 
 module.exports = {
     config: {
@@ -16,78 +17,98 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    let user = message.mentions.users.first()
-
     if (!message.mentions.users.size) {
 
-        let myLevel = await db.fetch(`level_${message.author.id}`)
-        if (myLevel === null) myLevel = 0;
+        let myUserId = message.author.id;
+        let myCoinsQuery = 'SELECT * FROM coins WHERE userid = ?';
+        let myXpQuery = 'SELECT * FROM xp WHERE userid = ?';
+        let myMsgQuery = 'SELECT * FROM messages WHERE userid = ?';
+        db.get(myCoinsQuery, [myUserId], (err, row) => {
+          if (err) {
+              console.log(err);
+          }
+          let myCoins = row.coins
     
-        let myXp = await db.fetch(`xp_${message.author.id}`)
-        if (myXp === null) myXp = 0;
-    
-        let myCoins = await db.fetch(`coins_${message.author.id}`)
-        if (myCoins === null) myCoins = 0;
-    
-        let myNxtLvlXp = myLevel * 500;
-        let myDifference = myNxtLvlXp - myXp;
-    
-        let myMessagesSentGlobal = await db.fetch(`globalMessages_${message.author.id}`)
-        if (myMessagesSentGlobal === null) myMessagesSentGlobal = 0;
-        let myMessagesSentGuild = await db.fetch(`guildMessages_${message.guild.id}_${message.author.id}`)
-        if (myMessagesSentGuild === null) myMessagesSentGuild = 0;
-        
+        db.get(myXpQuery, [myUserId], (err, row) => {
+          if (err) {
+              console.log(err);
+          }
+          let myCurrentXp = row.xp
+          let myCurrentLvl = row.level
+          let myNxtLvlXp = myCurrentLvl * 500;
+          let myDifference = myNxtLvlXp - myCurrentXp;
+
+        db.get(myMsgQuery, [myUserId], (err, row) => {
+          if (err) {
+              console.log(err);
+          }
+          let myMessagesSentGlobal = row.global
+
+
         const embed = new MessageEmbed()
         .setColor(colours.default)
         .setAuthor('Your profile', message.author.displayAvatarURL())
         .setDescription(stripIndents`
-        **❯ Level:** ${myLevel}
+        **❯ Level:** ${myCurrentLvl}
         **❯ Next Level:** ${myDifference} XP needed
-        **❯ XP:** ${myXp}
+        **❯ XP:** ${myCurrentXp}
         **❯ Coins:** ${myCoins}
-        **❯ Messages Sent (GLOBAL):** ${myMessagesSentGlobal}
-        **❯ Messages Sent (GUILD):** ${myMessagesSentGuild}
+        **❯ Messages Sent Globally:** ${myMessagesSentGlobal}
+        `)
+        .setThumbnail(message.author.displayAvatarURL())
+        .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
+        .setTimestamp()
+
+    message.channel.send(embed)
+});
+});
+});
+        } else {
+        let user = message.mentions.users.first();
+        let userid = message.author.id;
+        let coinsQuery = 'SELECT * FROM coins WHERE userid = ?';
+        let xpQuery = 'SELECT * FROM xp WHERE userid = ?';
+        let msgQuery = 'SELECT * FROM messages WHERE userid = ?';
+        db.get(coinsQuery, [userid], (err, row) => {
+          if (err) {
+              console.log(err);
+          }
+          let coins = row.coins
+    
+        db.get(xpQuery, [userid], (err, row) => {
+          if (err) {
+              console.log(err);
+          }
+          let currentXp = row.xp
+          let currentLvl = row.level
+          let nxtLvlXp = currentLvl * 500;
+          let difference = nxtLvlXp - currentXp;
+
+        db.get(msgQuery, [userid], (err, row) => {
+          if (err) {
+              console.log(err);
+          }
+          let messagesSentGlobal = row.global
+
+
+        const embed = new MessageEmbed()
+        .setColor(colours.default)
+        .setAuthor(`${user.username}'s Profile`, message.author.displayAvatarURL())
+        .setDescription(stripIndents`
+        **❯ Level:** ${currentLvl}
+        **❯ Next Level:** ${difference} XP needed
+        **❯ XP:** ${currentXp}
+        **❯ Coins:** ${coins}
+        **❯ Messages Sent Globally:** ${messagesSentGlobal}
         `)
         .setThumbnail(message.author.displayAvatarURL())
         .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
         .setTimestamp()
     
     message.channel.send(embed)
-        } else {
-
-    let level = await db.fetch(`level_${user.id}`)
-    if (level === null) level = 0;
-
-    let xp = await db.fetch(`xp_${user.id}`)
-    if (xp === null) xp = 0;
-
-    let coins = await db.fetch(`coins_${user.id}`)
-    if (coins === null) coins = 0;
-
-    let nxtLvlXp = level * 500;
-    let difference = nxtLvlXp - xp;
-
-    let messagesSentGlobal = await db.fetch(`globalMessages_${user.id}`)
-    if (messagesSentGlobal === null) messagesSentGlobal = 0;
-    let messagesSentGuild = await db.fetch(`guildMessages_${message.guild.id}_${user.id}`)
-    if (messagesSentGuild === null) messagesSentGuild = 0;
-
-    const embed = new MessageEmbed()
-    .setColor(colours.default)
-    .setAuthor(`${user.username}'s Profile`, user.displayAvatarURL())
-    .setDescription(stripIndents`
-    **❯ Level:** ${level}
-    **❯ Next Level:** ${difference} XP needed
-    **❯ XP:** ${xp}
-    **❯ Coins:** ${coins}
-    **❯ Messages Sent (GLOBAL):** ${messagesSentGlobal}
-    **❯ Messages Sent (GUILD):** ${messagesSentGuild}
-    `)
-    .setThumbnail(user.displayAvatarURL())
-    .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
-    .setTimestamp()
-
-message.channel.send(embed)
+});
+});
+});
         }
 
 }

@@ -2,11 +2,16 @@ const { prefix, nodes } = require('../../config.json');
 const { version } = require('../../package.json');
 const moment = require('moment');
 const { ErelaClient, Utils } = require('erela.js');
+const sqlite = require('sqlite3').verbose();
 
 module.exports = client => {
     console.log(`[${moment().format('M/D/YYYY h:mm a')}] ${client.user.username} is online`);
 
     client.user.setActivity(`${prefix}help`, { type: 'PLAYING'})
+    let db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE | sqlite.OPEN_CREATE);
+    db.run('CREATE TABLE IF NOT EXISTS xp(username TEXT, userid INTEGER, xp INTEGER, level INTEGER)')
+    db.run('CREATE TABLE IF NOT EXISTS coins(username TEXT, userid INTEGER, coins INTEGER)')
+    db.run('CREATE TABLE IF NOT EXISTS messages(username TEXT, userid INTEGER, global INTEGER)')
 
     client.music = new ErelaClient(client, nodes)
     .on('nodeError', console.log)
