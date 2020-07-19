@@ -7,7 +7,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/raiwex/raibot/badge)](https://www.codefactor.io/repository/github/raiwex/raibot)
 [![Twitch](https://img.shields.io/twitch/status/raiwexoxo)](https://www.twitch.tv/raiwexoxo)
 
-Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* using *[Discord.js](https://discord.js.org/#/)* library.
+Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* using *[Discord.js](https://discord.js.org/#/)* library. Originally created for private use.
 
 # Content
 - [Copyright](#copyright)
@@ -16,7 +16,7 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 - [Fun Information](#fun-information)
 
 ## Copyright
-- ©2019-2020 Raiwex#2711
+- ©2020 Raiwex#2711
 
 ## Features
 - Currency system
