@@ -34,5 +34,5 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 
 ## Fun Information
 - 60+ commands
-- 4000+ lines of JavaScript code
+- 3000+ lines of JavaScript code
 - Created January 19th 2020
