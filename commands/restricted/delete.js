@@ -16,13 +16,13 @@ module.exports = {
 
 run: async (client, message, args) => {
 
+  if (message.author.id != ownerId) return message.reply('You don\'t have permission to use this command.')
+
   let pUser = message.mentions.users.first();
   let username = pUser.tag;
   let userid = pUser.id;
 
   const amount = Number(args[1])
-
-  if (message.author.id != ownerId) return message.reply('You don\'t have permission to use this command.')
 
     let query = 'SELECT * FROM coins WHERE userid = ?';
     db.get(query, [userid], (err, row) => {

@@ -116,10 +116,9 @@ console.log(`[${moment().format('LT')}] ${message.author.tag} ~ ${message.conten
 
   ❯ View commands inside category using \`${prefix}help <category>\`.
   ❯ View information about command using \`${prefix}help <command>\`.
-  ❯ Setup all required text channels using \`${prefix}setup\`. *To remove these channels, trigger the command again.*
 
-  ★ [Server](https://discord.gg/KD457qA)
-  ★ [Repository](https://github.com/Raiwex/RaiBot)
+  ❯ [Server](https://discord.gg/KD457qA)
+  ❯ [Repository](https://github.com/Raiwex/RaiBot)
   `)
   .setColor(colours.default)
 

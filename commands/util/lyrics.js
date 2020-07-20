@@ -2,6 +2,7 @@ const { prefix } = require('../../config.json');
 const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
+const { stripIndents } = require('common-tags');
 
 module.exports = {
     config: {
@@ -23,9 +24,12 @@ run: async (client, message, args) => {
     if (body.error) return message.reply('I couldn\'t find that song\'s lyrics!')
 
     const embed = new MessageEmbed()
-    .setColor(colours.blue)
+    .setColor(colours.green)
     .setTitle(`Success!`)
-    .setDescription(`Found lyrics for [${body.author} - ${body.title}](${body.links.genius})`)
+    .setDescription(stripIndents`
+    Found lyrics for **${body.author} - ${body.title}**
+    *[Click here to view lyrics](${body.links.genius})*
+    `)
     .setThumbnail(body.thumbnail.genius)
     .setURL(body.links.genius)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())

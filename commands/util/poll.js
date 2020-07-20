@@ -17,7 +17,7 @@ run: async (client, message, args) => {
 
     const embed = new MessageEmbed()
     .setColor(colours.blue)
-    .setAuthor(`Poll created by ${message.author.tag}`, message.author.displayAvatarURL())
+    .setAuthor(`${message.author.tag}'s poll`, message.author.displayAvatarURL())
     .setDescription(args.join(' '))
     .setFooter('React to vote')
     .setTimestamp()
