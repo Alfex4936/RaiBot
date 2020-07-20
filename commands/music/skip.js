@@ -22,6 +22,6 @@ run: async (client, message, args) => {
     if (!player) return message.channel.send('No song/s currently playing in this server.');
 
     player.stop()
-    return message.channel.send('Successfully skipped the current song.')
+    return message.channel.send('⏭ Successfully skipped the current song.')
 }
 }

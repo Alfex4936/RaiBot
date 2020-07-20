@@ -22,6 +22,6 @@ run: async (client, message, args) => {
     if (!player) return message.channel.send('No song/s currently playing in this server.');
 
     client.music.players.destroy(message.guild.id);
-    return message.channel.send('Successfully stopped the music.')
+    return message.channel.send('⏹️ Successfully stopped the music.')
 }
 }

@@ -19,7 +19,7 @@ module.exports = client => {
         player.textChannel.send('Queue has ended.')
         return client.music.players.destroy(player.guild.id)
     })
-    .on('trackStart', ({textChannel}, {title}) => textChannel.send(`Now playing \`${title}\``))
+    .on('trackStart', ({textChannel}, {title}) => textChannel.send(`🎧 Now playing **${title}**`))
 
     client.levels = new Map()
     .set('none', 0.0)

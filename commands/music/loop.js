@@ -24,9 +24,9 @@ run: async (client, message, args) => {
 
     player.setTrackRepeat(!previousState);
     if(!previousState) {
-    message.channel.send('Loop Mode **ON**.')
+    message.channel.send('🔁 Loop Mode **ON**.')
     } else {
-    message.channel.send('Loop Mode **OFF**.')
+    message.channel.send('🔁 Loop Mode **OFF**.')
     }
 
 }

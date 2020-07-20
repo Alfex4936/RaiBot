@@ -21,6 +21,6 @@ run: async (client, message, args) => {
   if (!player) return message.channel.send('No song/s currently playing in this server.');
 
   player.queue.shuffle();
-  return message.channel.send('Queue is now shuffled.')
+  return message.channel.send('🔀 Queue is now shuffled.')
 }
 }

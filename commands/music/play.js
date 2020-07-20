@@ -29,11 +29,16 @@ run: async (client, message, args) => {
         voiceChannel: channel
     });
 
-    client.music.search(args.join(' '), message.author).then(async res => {
+    let input = args.join(' ')
+    if (args[0] === 'gaming') {
+        input = 'https://www.youtube.com/playlist?list=PLb8VSR0m9OlvutB6HdovgWSIdZBI5nvd-'
+    }
+
+    client.music.search(input, message.author).then(async res => {
         switch (res.loadType) {
             case 'TRACK_LOADED':
                 player.queue.add(res.tracks[0]);
-                message.channel.send(`Enqueuing \`${res.tracks[0].title}\``)
+                message.channel.send(`➡️ Enqueuing **${res.tracks[0].title}**`)
                 if (!player.playing) player.play()
                 break;
 
@@ -56,7 +61,7 @@ run: async (client, message, args) => {
 
                 const track = tracks[Number(m.content) - 1];
                 player.queue.add(track)
-                message.channel.send(`Enqueuing \`${track.title}\``)
+                message.channel.send(`➡️ Enqueuing **${track.title}**`)
                 if (!player.playing) player.play()
             });
 
@@ -67,7 +72,7 @@ run: async (client, message, args) => {
 
             case 'PLAYLIST_LOADED':
                 res.playlist.tracks.forEach(track => player.queue.add(track));
-                message.channel.send(`Enqueuing \`${res.playlist.tracks.length}\` tracks in playlist \`${res.playlist.info.name}\``)
+                message.channel.send(`➡️ Enqueuing \`${res.playlist.tracks.length}\` tracks in playlist **${res.playlist.info.name}**`)
                 if (!player.playing) player.play()
         }
     })
