@@ -23,5 +23,6 @@ run: async (client, message, args) => {
 
     client.music.players.destroy(message.guild.id);
     return message.channel.send('⏹️ Successfully stopped the music.')
+    
 }
 }

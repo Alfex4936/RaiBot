@@ -17,8 +17,10 @@ module.exports = {
 run: async (client, message, args) => {
 
     if (!message.mentions.users.size) {
+
       let myUserId = message.author.id;
       let myUsername = message.author.tag;
+
       let query = 'SELECT * FROM coins WHERE userid = ?';
       db.get(query, [myUserId], (err, row) => {
         if (err) {
@@ -30,14 +32,18 @@ run: async (client, message, args) => {
           insertdata.run(myUsername, MyUserId, 0)
           return;
         } else {
-        let myCoins = row.coins
-    
-    if (myCoins === null) myCoins = 0;
 
-message.reply(`You have **${myCoins}** coins.`)
-        }
-        });
+          let myCoins = row.coins
+
+          if (myCoins === null) myCoins = 0;
+  
+          message.reply(`You have **${myCoins}** coins.`)
+
+        };
+      });
+
     } else {
+
       let user = message.mentions.users.first()
       let userid = user.id
       let username = user.tag
@@ -53,13 +59,14 @@ message.reply(`You have **${myCoins}** coins.`)
           insertdata.run(username, userid, 0)
           return;
         } else {
-        let coins = row.coins
-    
-    if (coins === null) coins = 0;
 
-message.channel.send(`${user} has **${coins}** coins.`)
-        }
+          let coins = row.coins
+          if (coins === null) coins = 0;
+      
+          message.channel.send(`${user} has **${coins}** coins.`)
+          
+        };
       });
-    }
+    };
 }
 }

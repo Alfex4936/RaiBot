@@ -14,7 +14,7 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-    
+
     const { channel } = message.member.voice;
     const player = client.music.players.get(message.guild.id);
 
@@ -23,5 +23,6 @@ run: async (client, message, args) => {
 
     player.stop()
     return message.channel.send('⏭ Successfully skipped the current song.')
+
 }
 }

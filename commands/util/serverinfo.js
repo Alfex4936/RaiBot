@@ -16,9 +16,7 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-
-    let roles = message.guild.roles.cache.sort((a, b ) => b.position - a.position).map(role => role.toString())
-
+    
     let filterLevels = {
         DISABLED: 'Off',
         MEMBERS_WITHOUT_ROLES: 'No Role',
@@ -87,7 +85,7 @@ run: async (client, message, args) => {
     .setThumbnail(message.guild.iconURL())
     .setTimestamp()
 
-message.channel.send(embed);
-    
+    message.channel.send(embed);
+
 }
 }

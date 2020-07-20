@@ -22,8 +22,8 @@ run: async (client, message, args) => {
     .setColor(colours.default)
     .setDescription(list)
     .setFooter(`Total Servers: ${client.guilds.cache.size}`)
-      
-message.channel.send(embed)
+
+    message.channel.send(embed)
 
 }
 }

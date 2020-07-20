@@ -7,7 +7,7 @@ const neko = new client();
 module.exports = {
     config: {
     name: 'owoify',
-    description: 'Makes text wook wike this',
+    description: 'Owoifies text',
     usage: `${prefix}owoify <text>`,
     category: 'text',
     access: 'everyone',
@@ -24,7 +24,7 @@ run: async (client, message, args) => {
     let owo = await neko.sfw.OwOify({text: textToOwO});
     if (owo.length > 2000) return message.reply('Your text is too long!')
 
-message.channel.send(owo.owo)
+    message.channel.send(owo.owo)
         
 }
 }

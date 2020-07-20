@@ -50,7 +50,7 @@ run: async (client, message, args) => {
     .setThumbnail(member.user.displayAvatarURL())
     .setTimestamp()
 
-message.channel.send(embed);
+    message.channel.send(embed);
     
 }
 }

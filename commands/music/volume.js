@@ -40,5 +40,6 @@ run: async (client, message, args) => {
 
     player.setVolume(Number(args[0]));
     return message.channel.send(`${volume} Successfully set the volume to ${args[0]}`)
+    
 }
 }

@@ -25,18 +25,18 @@ run: async (client, message, args) => {
     .then(res => res.json())
     .then(body => {
 
-    const embed = new MessageEmbed()
-    .setColor(colours.blue)
-    .setTitle(`Random ${randomFact.slice(33 - 0)} fact`)
-    .setDescription(body.fact)
-    .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
-    .setTimestamp()
+        const embed = new MessageEmbed()
+        .setColor(colours.blue)
+        .setTitle(`Random ${randomFact.slice(33 - 0)} fact`)
+        .setDescription(body.fact)
+        .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
+        .setTimestamp()
 
-message.channel.send(embed).then(sentEmbed => {
-    sentEmbed.react('⬆️')
-    sentEmbed.react('⬇️')
-})
-})
+        message.channel.send(embed).then(sentEmbed => {
+            sentEmbed.react('⬆️')
+            sentEmbed.react('⬇️')
+        });
+    });
 
 }
 }

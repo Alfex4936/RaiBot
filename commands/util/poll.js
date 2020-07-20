@@ -12,11 +12,11 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-
+    
     if (!args.join(' ')) return message.reply('Please input a question!')
 
     const embed = new MessageEmbed()
-    .setColor(colours.blue)
+    .setColor(colours.yellow)
     .setAuthor(`${message.author.tag}'s poll`, message.author.displayAvatarURL())
     .setDescription(args.join(' '))
     .setFooter('React to vote')
@@ -27,7 +27,7 @@ run: async (client, message, args) => {
     message.channel.send(embed).then(sentEmbed => {
         sentEmbed.react('✅')
         sentEmbed.react('❌')
-    })
-    
+    });
+
 }
 }

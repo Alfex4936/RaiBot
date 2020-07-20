@@ -24,6 +24,7 @@ run: async (client, message, args) => {
     let channelName = message.channel.name;
     let channelId = message.channel.id;
     let query = 'SELECT * FROM config WHERE guildid = ?';
+
     db.get(query, [guildId], (err, row) => {
       if (err) {
           console.log(err);
@@ -35,11 +36,13 @@ run: async (client, message, args) => {
         message.channel.send(`Successfully set **#${message.channel.name}** as mod-logs channel.`);
         return;
       } else {
-    db.run('UPDATE config SET guildname = ?, channelname = ?, channelid = ?, type = ? WHERE guildid = ?', [guildName, channelName, channelId, 'mod-logs', guildId])
 
-message.channel.send(`Successfully set **#${message.channel.name}** as mod-logs channel.`);
-      }
-});
+        db.run('UPDATE config SET guildname = ?, channelname = ?, channelid = ?, type = ? WHERE guildid = ?', [guildName, channelName, channelId, 'mod-logs', guildId])
+
+        message.channel.send(`Successfully set **#${message.channel.name}** as mod-logs channel.`);
+
+      };
+    });
 
 }
 }

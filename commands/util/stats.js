@@ -1,7 +1,6 @@
 const { prefix } = require('../../config.json');
 const colours = require('../../colours.json');
 const Discord = require('discord.js');
-const moment = require('moment');
 const { version } = require('../../package.json');
 const { readdirSync } = require('fs');
 const { stripIndents } = require('common-tags');
@@ -17,7 +16,7 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-
+    
     const categories = readdirSync('./commands/')
 
     const embed = new Discord.MessageEmbed()
@@ -29,7 +28,6 @@ run: async (client, message, args) => {
     `)
 
     .addField('Versions', stripIndents`
-    **❯ Bot:** ${version}
     **❯ Discord.js:** ${Discord.version}
     **❯ Node:** ${process.version}
     `)
@@ -44,7 +42,7 @@ run: async (client, message, args) => {
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()
 
-message.channel.send(embed);
-    
+    message.channel.send(embed);
+
 }
 }

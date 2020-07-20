@@ -26,7 +26,7 @@ run: async (client, message, args) => {
 
       })).catch(error => {
         message.reply(error.message.replace('bulk delete', 'purge'))
-    })
+    });
 
 }
 }

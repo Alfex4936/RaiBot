@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     config: {
     name: 'reverse',
-    description: 'txet sesreveR',
+    description: 'Reverses text',
     usage: `${prefix}reverse <text>`,
     category: 'text',
     access: 'everyone'
@@ -21,7 +21,7 @@ run: async (client, message, args) => {
     let reversedText = (textToReverse.split('').reverse().join(''))
     if (reversedText.length > 2000) return message.reply('Your text is too long!')
 
-message.channel.send(reversedText)
+    message.channel.send(reversedText)
 
 }
 }

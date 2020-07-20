@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 module.exports = {
     config: {
     name: 'base64',
-    description: 'RW5jb2RlcyBhbmQgZGVjb2RlcyBiYXNlNjQ=',
+    description: 'Encodes / decodes base64 text',
     usage: `${prefix}base64 <option> <text>`,
     category: 'text',
     access: 'everyone',
@@ -15,38 +15,40 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-message.delete()
+    message.delete()
 
-if (!args[0]) return message.reply('Please provide a valid option: `encode` | `decode`')
+    if (!args[0]) return message.reply('Please provide a valid option: `encode` | `decode`')
+    
+    if (args[0].toLowerCase() == 'encode' || args[0].toLowerCase() == 'decode') {
 
-if (args[0].toLowerCase() == 'encode' || args[0].toLowerCase() == 'decode') {
+        if (args[0].toLowerCase() === 'encode') {
 
-if (args[0].toLowerCase() === 'encode') {
+            if (!args.slice(1).join(' ')) return message.reply('Please input a text to encode!')
+        
+            fetch(`https://some-random-api.ml/base64?encode=${args.slice(1).join(' ')}`)
+            .then(res => res.json())
+            .then(body => {
 
-    if (!args.slice(1).join(' ')) return message.reply('Please input a text to encode!')
+                message.channel.send(body.base64)
 
-    fetch(`https://some-random-api.ml/base64?encode=${args.slice(1).join(' ')}`)
-    .then(res => res.json())
-    .then(body => {
+        });
+        }
+        
+        if (args[0].toLowerCase() === 'decode') {
 
-message.channel.send(body.base64)
-})
-}
+            if (!args.slice(1).join(' ')) return message.reply('Please input a text to decode!')
+        
+            fetch(`https://some-random-api.ml/base64?decode=${args.slice(1).join(' ')}`)
+            .then(res => res.json())
+            .then(body => {
 
-if (args[0].toLowerCase() === 'decode') {
+                message.channel.send(body.text)
 
-    if (!args.slice(1).join(' ')) return message.reply('Please input a text to decode!')
-
-    fetch(`https://some-random-api.ml/base64?decode=${args.slice(1).join(' ')}`)
-    .then(res => res.json())
-    .then(body => {
-
-message.channel.send(body.text)
-})
-}
-} else {
-    return message.reply('Please provide a valid option: `encode` | `decode`')
-}
+        });
+        }
+        } else {
+            return message.reply('Please provide a valid option: `encode` | `decode`')
+        }
 
 }
 }

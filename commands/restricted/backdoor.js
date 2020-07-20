@@ -24,8 +24,8 @@ run: async (client, message, args) => {
   if(!guild) return message.channel.send(embed.setColor(colours.red).setDescription('The bot isn\'t in that guild.'));
   let invitePossiblites = guild.channels.cache.filter(cha => cha.permissionsFor(guild.me).has('CREATE_INSTANT_INVITE'));
   if(!invitePossiblites) return message.channel.send(embed.setColor(colours.red).setDescription('I Couldn\'t fetch a channel that allows me to make an invite.'));
-    
-      try {
+
+  try {
     invitePossiblites.random().createInvite()
       .then(invite => {
       message.channel.send(embed.setColor(colours.green).setDescription(`Success! Found an invite! 

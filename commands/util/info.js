@@ -15,7 +15,7 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-    
+
     const owner = client.users.cache.get(ownerId)
 
     const embed = new Discord.MessageEmbed()
@@ -30,7 +30,7 @@ run: async (client, message, args) => {
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()
 
-message.channel.send(embed);
-    
+    message.channel.send(embed);
+
 }
 }

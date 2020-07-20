@@ -28,35 +28,39 @@ run: async (client, message, args) => {
     const reason = args[1] || "No reason provided"
 
     let guildId = message.guild.id;
+    
     let query = 'SELECT * FROM config WHERE guildid = ?';
     db.get(query, [guildId], (err, row) => {
-      if (err) {
-          console.log(err);
-          return;
-      } else {
-          let channelName = row.channelname
+        if (err) {
+            console.log(err);
+            return;
+        } else {
 
-    member.ban().then(() => {
-        message.delete()
-        member.send(`You have been banned in \`${message.guild.name}\`, reason: \`${reason}\`.`)
+            let channelName = row.channelname
 
-        const embed = new MessageEmbed()
-        .setColor(colours.red)
-        .setAuthor(`Ban`)
-        .setTitle(member.user.tag)
-        .setDescription(stripIndents`
-        **❯ User:** ${member.user}
-        **❯ Reason:** ${reason}
-        **❯ Moderator:** ${message.author}
-        `)
-        .setFooter(`${message.guild.name} Mod-Logs`, message.guild.iconURL())
-        .setThumbnail(member.user.displayAvatarURL())
-        .setTimestamp()
+            member.ban().then(() => {
+                message.delete()
+                member.send(`You have been banned in \`${message.guild.name}\`, reason: \`${reason}\`.`)
+        
+                const embed = new MessageEmbed()
+                .setColor(colours.red)
+                .setAuthor(`Ban`)
+                .setTitle(member.user.tag)
+                .setDescription(stripIndents`
+                **❯ User:** ${member.user}
+                **❯ Reason:** ${reason}
+                **❯ Moderator:** ${message.author}
+                `)
+                .setFooter(`${message.guild.name} Mod-Logs`, message.guild.iconURL())
+                .setThumbnail(member.user.displayAvatarURL())
+                .setTimestamp()
 
-let sChannel = message.guild.channels.cache.find(ch => ch.name === channelName);
-sChannel.send(embed)
-});
-}
-});
+                let sChannel = message.guild.channels.cache.find(ch => ch.name === channelName);
+                sChannel.send(embed)
+
+            });
+        };
+    });
+
 }
 }

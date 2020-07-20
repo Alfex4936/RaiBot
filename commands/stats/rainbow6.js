@@ -90,7 +90,7 @@ run: async (client, message, args) => {
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()
 
-message.channel.send(embed).catch(e => message.reply(`Error: ${e.message}`))
+    message.channel.send(embed).catch(e => message.reply(`Error: ${e.message}`))
 
 }
 }

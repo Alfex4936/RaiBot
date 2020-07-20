@@ -14,7 +14,7 @@ module.exports = {
 },
 
 run: async (client, message, args) => {
-    
+
     const { channel } = message.member.voice;
     const player = client.music.players.get(message.guild.id);
 
@@ -28,5 +28,6 @@ run: async (client, message, args) => {
 
     player.pause(player.playing);
     return message.channel.send(`${emojis[player.playing]} Successfully **${player.playing ? 'resumed' : 'paused'}** the music.`)
+
 }
 }

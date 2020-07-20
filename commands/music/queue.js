@@ -121,7 +121,7 @@ run: async (client, message, args) => {
           msg.edit(embed);
         });
         middle.on('collect', async (r) => r.users.remove(message.author));
-      }
+      };
     });
   },
 };

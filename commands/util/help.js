@@ -17,6 +17,8 @@ module.exports = {
 
 run: async (client, message, args) => {
 
+    const categories = readdirSync('./commands/')
+
     const embed = new MessageEmbed()
     .setAuthor(`${client.user.username} Help ✨`, client.user.displayAvatarURL())
     .setColor(colours.default)
@@ -25,8 +27,8 @@ run: async (client, message, args) => {
     .setTimestamp()
 
     if (!args[0]) {
+
         embed.addField('Command Categories', stripIndents`
-        \`actions           :\` IRL stuff
         \`config            :\` Bot configuration
         \`economy           :\` Simple economy system
         \`fun               :\` Mostly entertainment
@@ -41,13 +43,11 @@ run: async (client, message, args) => {
         To view the commands inside a category use \`r!help <category>\`
         `)
 
-return message.channel.send(embed)
+        return message.channel.send(embed);
 
     } else {
-        const eEmbed = new MessageEmbed()
-        const categories = ['actions', 'config', 'economy', 'fun', 'mod', 'music', 'nsfw', 'restricted', 'stats', 'text', 'util']
 
-if (contains(args[0].toLowerCase(), categories)) {
+        if (contains(args[0].toLowerCase(), categories)) {
 
             const dir = client.commands.filter(c => c.config.category === args[0].toLowerCase())
             const embed = new MessageEmbed()
@@ -56,39 +56,40 @@ if (contains(args[0].toLowerCase(), categories)) {
             .setDescription(dir.map(c => `\n\`${prefix}${pad(c.config.name, 18)}:\` ${c.config.description}`, true).join(' '))
             .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
             .setTimestamp()
+        
+            return message.channel.send(embed);
 
-return message.channel.send(embed)
-}
-}
+        };
+    };
 
-let command = client.commands.get(args[0].toLowerCase())
+    let command = client.commands.get(args[0].toLowerCase())
 
-if (command) {
+    if (command) {
 
-command = command.config
+        command = command.config
+    
+        const embed = new MessageEmbed()
+        .setAuthor(`Command Info`, client.user.displayAvatarURL())
+        .setTitle(`${prefix}${command.name}`)
+        .setColor(colours.default)
+        .addField(`General`, stripIndents`
+        **❯ Aliases:** ${command.aliases ? command.aliases.join(', ') : 'None'}
+        **❯ Category:** ${command.category}
+        **❯ Description:** ${command.description || 'No description provided'}
+        **❯ Usage:** ${command.usage || 'No usage'}
+        `)
+        
+        .addField(`Accessibility`, stripIndents`
+        **❯ Access:** ${capitaliseFirst(command.access)}
+        **❯ NSFW:** ${command.nsfw ? 'Yes' : 'No'}
+        `)
+        
+        .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
+        .setTimestamp()
+        
+        return message.channel.send(embed);
 
-const embed = new MessageEmbed()
-.setAuthor(`Command Info`, client.user.displayAvatarURL())
-.setTitle(`${prefix}${command.name}`)
-.setColor(colours.default)
-.addField(`General`, stripIndents`
-**❯ Aliases:** ${command.aliases ? command.aliases.join(', ') : 'None'}
-**❯ Category:** ${command.category}
-**❯ Description:** ${command.description || 'No description provided'}
-**❯ Usage:** ${command.usage || 'No usage'}
-`)
-
-.addField(`Accessibility`, stripIndents`
-**❯ Access:** ${capitaliseFirst(command.access)}
-**❯ NSFW:** ${command.nsfw ? 'Yes' : 'No'}
-`)
-
-
-.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
-.setTimestamp()
-
-return message.channel.send(embed)
-}
+    };
 
 }
 }

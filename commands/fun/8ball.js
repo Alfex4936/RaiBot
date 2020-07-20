@@ -25,7 +25,7 @@ run: async (client, message, args) => {
 
     const random = Math.floor(Math.random() * replies.length)
 
-message.reply(replies[random])
-
+    message.reply(replies[random])
+    
 }
 }

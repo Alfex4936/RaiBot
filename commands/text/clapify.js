@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     config: {
     name: 'clapify',
-    description: 'Makes 👏 text 👏 look 👏 like 👏 this',
+    description: 'Clapifies text',
     usage: `${prefix}clapify <text>`,
     category: 'text',
     access: 'everyone'
@@ -20,8 +20,8 @@ run: async (client, message, args) => {
 
     let clapifiedText = (textToClapify.replace(/ /g, ' 👏 '))
     if (clapifiedText.length > 2000) return message.reply('Your text is too long!')
-    
-message.channel.send(clapifiedText)
 
+    message.channel.send(clapifiedText)
+    
 }
 }

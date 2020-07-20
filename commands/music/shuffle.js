@@ -22,5 +22,6 @@ run: async (client, message, args) => {
 
   player.queue.shuffle();
   return message.channel.send('🔀 Queue is now shuffled.')
+ 
 }
 }

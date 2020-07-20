@@ -22,26 +22,28 @@ run: async (client, message, args) => {
   let username = pUser.tag;
   let userid = pUser.id;
 
-  const amount = Number(args[1])
+  let amount = Number(args[1])
 
-    let query = 'SELECT * FROM coins WHERE userid = ?';
-    db.get(query, [userid], (err, row) => {
-      if (err) {
-          console.log(err);
-          return;
-      }
-      if (row === undefined) {
-        let insertdata = db.prepare('INSERT INTO coins VALUES(?,?,?)');
-        insertdata.run(username, userid, 0)
+  let query = 'SELECT * FROM coins WHERE userid = ?';
+  db.get(query, [userid], (err, row) => {
+    if (err) {
+        console.log(err);
         return;
-      } else {
-        let currentCoinAmt = row.coins
-          db.run('UPDATE coins SET coins = ? WHERE userid = ?', [currentCoinAmt - amount, userid])
-          };
+    }
+    if (row === undefined) {
+      let insertdata = db.prepare('INSERT INTO coins VALUES(?,?,?)');
+      insertdata.run(username, userid, 0)
+      return;
+    } else {
 
-  })
+      let currentCoinAmt = row.coins
+      db.run('UPDATE coins SET coins = ? WHERE userid = ?', [currentCoinAmt - amount, userid])
+
+    }
+  });
 
   message.delete()
   message.channel.send(`Removed **${amount}** coins from ${pUser}.`)
+  
 }
 } 

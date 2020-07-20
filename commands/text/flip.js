@@ -6,7 +6,7 @@ const flip = require('flip-text');
 module.exports = {
     config: {
     name: 'flip',
-    description: 'ʇxǝʇ ɐ sdᴉlℲ',
+    description: 'Flips text',
     usage: `${prefix}flip <text>`,
     category: 'text',
     access: 'everyone'
@@ -21,8 +21,8 @@ run: async (client, message, args) => {
 
     let flippedText = flip(textToFlip)
     if (flippedText.length > 2000) return message.reply('Your text is too long!')
-    
-message.channel.send(flippedText)
+
+    message.channel.send(flippedText)
 
 }
 }

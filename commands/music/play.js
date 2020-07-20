@@ -74,7 +74,7 @@ run: async (client, message, args) => {
                 res.playlist.tracks.forEach(track => player.queue.add(track));
                 message.channel.send(`➡️ Enqueuing \`${res.playlist.tracks.length}\` tracks in playlist **${res.playlist.info.name}**`)
                 if (!player.playing) player.play()
-        }
-    })
+        };
+    });
 }
 }

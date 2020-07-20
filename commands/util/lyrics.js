@@ -21,22 +21,23 @@ run: async (client, message, args) => {
     .then(res => res.json())
     .then(body => {
 
-    if (body.error) return message.reply('I couldn\'t find that song\'s lyrics!')
+        if (body.error) return message.reply('I couldn\'t find that song\'s lyrics!')
 
-    const embed = new MessageEmbed()
-    .setColor(colours.green)
-    .setTitle(`Success!`)
-    .setDescription(stripIndents`
-    Found lyrics for **${body.author} - ${body.title}**
-    *[Click here to view lyrics](${body.links.genius})*
-    `)
-    .setThumbnail(body.thumbnail.genius)
-    .setURL(body.links.genius)
-    .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
-    .setTimestamp()
+        const embed = new MessageEmbed()
+        .setColor(colours.green)
+        .setTitle(`Success!`)
+        .setDescription(stripIndents`
+        Found lyrics for **${body.author} - ${body.title}**
+        *[Click here to view lyrics](${body.links.genius})*
+        `)
+        .setThumbnail(body.thumbnail.genius)
+        .setURL(body.links.genius)
+        .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
+        .setTimestamp()
 
-message.channel.send(embed)
-})
+        message.channel.send(embed);
+
+    });
 
 }
 }
