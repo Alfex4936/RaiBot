@@ -1,9 +1,9 @@
 const { prefix, ownerId } = require('../../config.json');
 const colours = require('../../colours.json');
 const { MessageEmbed } = require('discord.js');
-const moment = require('moment');
-const ms = require('ms');
 const { stripIndents } = require('common-tags');
+const sqlite = require('sqlite3').verbose();
+const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
 
 module.exports = {
     config: {
@@ -27,6 +27,15 @@ run: async (client, message, args) => {
 
     const reason = args[1] || "No reason provided"
 
+    let guildId = message.guild.id;
+    let query = 'SELECT * FROM config WHERE guildid = ?';
+    db.get(query, [guildId], (err, row) => {
+      if (err) {
+          console.log(err);
+          return;
+      } else {
+          let channelName = row.channelname
+
     member.ban().then(() => {
         message.delete()
         member.send(`You have been banned in \`${message.guild.name}\`, reason: \`${reason}\`.`)
@@ -34,7 +43,7 @@ run: async (client, message, args) => {
         const embed = new MessageEmbed()
         .setColor(colours.red)
         .setAuthor(`Ban`)
-        .setTitle(member.author.tag)
+        .setTitle(member.user.tag)
         .setDescription(stripIndents`
         **❯ User:** ${member.user}
         **❯ Reason:** ${reason}
@@ -44,8 +53,10 @@ run: async (client, message, args) => {
         .setThumbnail(member.user.displayAvatarURL())
         .setTimestamp()
 
-let sChannel = message.guild.channels.cache.find(ch => ch.name === 'mod-logs');
+let sChannel = message.guild.channels.cache.find(ch => ch.name === channelName);
 sChannel.send(embed)
+});
+}
 });
 }
 }

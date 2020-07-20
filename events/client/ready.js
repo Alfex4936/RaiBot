@@ -11,6 +11,7 @@ module.exports = client => {
     db.run('CREATE TABLE IF NOT EXISTS xp(username TEXT, userid INTEGER, xp INTEGER, level INTEGER)')
     db.run('CREATE TABLE IF NOT EXISTS coins(username TEXT, userid INTEGER, coins INTEGER)')
     db.run('CREATE TABLE IF NOT EXISTS messages(username TEXT, userid INTEGER, global INTEGER)')
+    db.run('CREATE TABLE IF NOT EXISTS config(guildname TEXT, guildid INTEGER, channelname TEXT, channelid INTEGER, type TEXT)')
 
     client.music = new ErelaClient(client, nodes)
     .on('nodeError', console.log)

@@ -10,5 +10,5 @@ module.exports = (bot) => {
             
         }
     }
-    ['actions', 'economy', 'fun', 'mod', 'music', 'nsfw', 'restricted', 'stats', 'text', 'util'].forEach(x => load(x))
+    ['actions', 'config', 'economy', 'fun', 'mod', 'music', 'nsfw', 'restricted', 'stats', 'text', 'util'].forEach(x => load(x))
 }

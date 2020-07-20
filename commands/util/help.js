@@ -34,6 +34,7 @@ run: async (client, message, args) => {
     if (!args[0]) {
         embed.addField('Command Categories', stripIndents`
         \`actions           :\` IRL stuff
+        \`config            :\` Bot configuration
         \`economy           :\` Simple economy system
         \`fun               :\` Mostly entertainment
         \`mod               :\` Moderate your server
@@ -51,7 +52,7 @@ return message.channel.send(embed)
 
     } else {
         const eEmbed = new MessageEmbed()
-        const categories = ['actions', 'economy', 'fun', 'mod', 'music', 'nsfw', 'restricted', 'stats', 'text', 'util']
+        const categories = ['actions', 'config', 'economy', 'fun', 'mod', 'music', 'nsfw', 'restricted', 'stats', 'text', 'util']
 
 if (contains(args[0].toLowerCase(), categories)) {
 

@@ -102,7 +102,7 @@ if (!message.author.bot) {
 
 // Message Listener
 
-console.log(`[${moment().format('LT')}] ${message.author.tag} | ${message.guild.name} ~ ${message.content}`)
+console.log(`[${moment().format('LT')}] ${message.author.tag} ~ ${message.content}`)
 
 });
 
