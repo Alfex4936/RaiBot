@@ -33,6 +33,6 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 - [Invite](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)
 
 ## Fun Information
-- 70+ commands
+- 60+ commands
 - 4000+ lines of JavaScript code
 - Created January 19th 2020
