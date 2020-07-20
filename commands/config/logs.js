@@ -16,6 +16,9 @@ module.exports = {
 
 run: async (client, message, args) => {
 
+    if (!message.member.hasPermission('ADMINISTRATOR')) return message.reply('You don\'t have permission to use this command.');
+    if (!message.guild.me.hasPermission('ADMINISTRATOR')) return message.reply('I don\'t have permission to execute this command!');
+
     let guildName = message.guild.name;
     let guildId = message.guild.id;
     let channelName = message.channel.name;
