@@ -15,7 +15,7 @@ module.exports = {
 
 run: async (client, message, args) => {
 
-    if (!args) return message.reply('Please input a song!')
+    if (!args.join(' ')) return message.reply('Please input a song!')
 
     fetch(`https://some-random-api.ml/lyrics?title=${args.join('-')}`)
     .then(res => res.json())

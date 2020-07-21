@@ -1,7 +1,6 @@
 const { prefix } = require('../../config.json');
 const colours = require('../../colours.json');
 const Discord = require('discord.js');
-const { version } = require('../../package.json');
 const { readdirSync } = require('fs');
 const { stripIndents } = require('common-tags');
 const { duration } = require('../../functions.js');

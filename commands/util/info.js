@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const colours = require('../../colours.json');
 const { prefix, ownerId } = require('../../config.json');
-const moment = require('moment');
-const { version } = require('../../package.json');
 const { stripIndents } = require('common-tags');
 
 module.exports = {
@@ -22,10 +20,10 @@ run: async (client, message, args) => {
     .setAuthor(`${client.user.username} Info`, client.user.displayAvatarURL())
     .setColor(colours.default)
     .setDescription(stripIndents`
-    **❯ Owner:** ${owner.tag}
-    **❯ Invite:** [Invite Link](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)
-    **❯ Server:** [Server](https://discord.gg/KD457qA)
-    **❯ Repository:** [GitHub](https://github.com/Raiwex/RaiBot)
+    ❯ **Owner:** ${owner.tag}
+    ❯ [Invite](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)
+    ❯ [Server](https://discord.gg/KD457qA)
+    ❯ [Repository](https://github.com/Raiwex/RaiBot)
     `)
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()
