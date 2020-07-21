@@ -17,7 +17,7 @@ module.exports = client => {
     .on('nodeError', console.log)
     .on('nodeConnect', () => console.log(`[${moment().format('M/D/YYYY h:mm a')}] Succesfully created a new Node.`))
     .on('queueEnd', player => {
-        player.textChannel.send('Queue has ended.')
+        player.textChannel.send('⬅️ Queue has ended.')
         return client.music.players.destroy(player.guild.id)
     })
     .on('trackStart', ({textChannel}, {title}) => textChannel.send(`🎧 Now playing **${title}**`))

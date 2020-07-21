@@ -3,7 +3,6 @@
 # RaiBot
 
 [![Discord](https://img.shields.io/discord/347876379645313024.svg?logo=discord&colorB=7289DA)](https://discord.gg/KD457qA)
-[![Discord.js](https://img.shields.io/npm/v/discord.js?label=discord.js)](https://discord.js.org/#/)
 [![CodeFactor](https://www.codefactor.io/repository/github/raiwex/raibot/badge)](https://www.codefactor.io/repository/github/raiwex/raibot)
 [![Twitch](https://img.shields.io/twitch/status/raiwexoxo)](https://www.twitch.tv/raiwexoxo)
 
@@ -14,6 +13,8 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 - [Features](#features)
 - [Invite](#invite)
 - [Fun Information](#fun-information)
+- [Commands](#commands)
+- [Planned Commands](#planned-commands)
 
 ## Copyright
 - ©2020 Raiwex#2711
@@ -36,3 +37,10 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 - 60+ commands
 - 3000+ lines of JavaScript code
 - Created January 19th 2020
+
+## Commands
+| Name | Description | Usage | Category | Access | Aliases |
+| --- | ----------- | --- | --- | --- | --- |
+| logs |  Sets modlogs channel | r!logs | config | everyone | log, modlogs |
+
+## Planned Commands
