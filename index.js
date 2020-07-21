@@ -104,8 +104,8 @@ client.on('message', message => {
 });
 
 const imEmbed = new MessageEmbed()
+.setTitle('Thanks for inviting me! ❤️')
 .setDescription(stripIndents`
-Thanks for inviting me! ❤️
 
 To get started type \`${prefix}help\`.
 
@@ -114,6 +114,8 @@ To get started type \`${prefix}help\`.
 
 ❯ [Server](https://discord.gg/KD457qA)
 ❯ [Repository](https://github.com/Raiwex/RaiBot)
+
+*Note: This is self-hosted bot - it's not online 24/7.*
 `)
 .setColor(colours.default)
 
