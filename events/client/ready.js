@@ -4,7 +4,7 @@ const { ErelaClient } = require('erela.js');
 const sqlite = require('sqlite3').verbose();
 
 module.exports = client => {
-    console.log(`[${moment().format('M/D/YYYY h:mm a')}] ${client.user.username} is online`);
+    console.log(`[${moment().format('M/D/YYYY h:mm a')}] ${client.user.username} is online.`);
 
     client.user.setActivity(`${prefix}help`, { type: 'PLAYING'})
     let db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE | sqlite.OPEN_CREATE);

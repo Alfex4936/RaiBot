@@ -7,15 +7,18 @@ const { stripIndents } = require('common-tags');
 const sqlite = require('sqlite3').verbose();
 const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
 
-// Login
-
 client.login(token);
-
-// Events & Command Handler
 
 ['commands', 'aliases'].forEach(x => client [x] = new Collection());
 ['console', 'command', 'event'].forEach(x => require(`./handlers/${x}`)(client))
 
+client.on('guildCreate', guild => {
+  console.log(`[${moment().format('LT')}] >>> Joined guild ${guild.name} with ${guild.memberCount} members.`)
+});
+
+client.on('guildDelete', guild => {
+  console.log(`[${moment().format('LT')}] <<< Left guild ${guild.name} with ${guild.memberCount} members.`)
+});
 
 client.on('message', message => {
 
@@ -79,6 +82,7 @@ client.on('message', message => {
             .setTitle(`Congrats, ${message.author.username}! You are now rank ${currentRank + 1}.`)
             .setColor(colours.white)
             message.channel.send(rankEmbed)
+
           };
         };
       };
@@ -124,7 +128,7 @@ To get started type \`${prefix}help\`.
 ❯ [Server](https://discord.gg/KD457qA)
 ❯ [Repository](https://github.com/Raiwex/RaiBot)
 
-*Note: This is self-hosted bot - it's not online 24/7.*
+***Note:** This is self-hosted bot - it's not online 24/7.*
 `)
 .setColor(colours.default)
 
