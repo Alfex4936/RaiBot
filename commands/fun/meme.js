@@ -9,7 +9,8 @@ module.exports = {
     description: 'Shows you an epic meme',
     usage: `${prefix}meme`,
     category: 'fun',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['m']
 },
 
 run: async (client, message, args) => {

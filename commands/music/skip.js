@@ -10,7 +10,7 @@ module.exports = {
     usage: `${prefix}skip`,
     category: 'music',
     access: 'everyone',
-    aliases: ['next']
+    aliases: ['s', 'next']
 },
 
 run: async (client, message, args) => {

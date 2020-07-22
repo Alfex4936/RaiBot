@@ -9,7 +9,8 @@ module.exports = {
     description: 'Emojifies text',
     usage: `${prefix}emojify <text>`,
     category: 'text',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['emoji']
 },
 
 run: async (client, message, args) => {

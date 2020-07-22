@@ -10,7 +10,8 @@ module.exports = {
     description: 'Displays current weather',
     usage: `${prefix}weather <location> <degree type>`,
     category: 'stats',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['w']
 },
 
 run: async (client, message, args) => {

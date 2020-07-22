@@ -8,7 +8,8 @@ module.exports = {
     description: 'Clapifies text',
     usage: `${prefix}clapify <text>`,
     category: 'text',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['clap']
 },
 
 run: async (client, message, args) => {

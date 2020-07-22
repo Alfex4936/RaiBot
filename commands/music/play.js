@@ -9,7 +9,8 @@ module.exports = {
     description: 'Plays a song / playlist or searches for a song',
     usage: `${prefix}play [song | playlist]`,
     category: 'music',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['p']
 },
 
 run: async (client, message, args) => {

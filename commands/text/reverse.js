@@ -8,7 +8,8 @@ module.exports = {
     description: 'Reverses text',
     usage: `${prefix}reverse <text>`,
     category: 'text',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['rev']
 },
 
 run: async (client, message, args) => {

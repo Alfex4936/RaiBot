@@ -12,7 +12,7 @@ module.exports = {
     usage: `${prefix}help [category | command]`,
     category: 'util',
     access: 'everyone',
-    aliases: ['commands']
+    aliases: ['h', 'commands']
 },
 
 run: async (client, message, args) => {

@@ -9,7 +9,8 @@ module.exports = {
     description: 'Shuffles the queue',
     usage: `${prefix}shuffle`,
     category: 'music',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['sh', 'mix']
 },
 
 run: async (client, message, args) => {

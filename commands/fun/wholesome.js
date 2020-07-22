@@ -9,7 +9,8 @@ module.exports = {
     description: 'Shows you wholesome meme',
     usage: `${prefix}wholesome`,
     category: 'fun',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['wm']
 },
 
 run: async (client, message, args) => {

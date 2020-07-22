@@ -9,7 +9,8 @@ module.exports = {
     description: 'Tells you an advice when you need it',
     usage: `${prefix}advice`,
     category: 'fun',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['adv']
 },
 
 run: async (client, message, args) => {

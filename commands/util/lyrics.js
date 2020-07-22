@@ -10,7 +10,8 @@ module.exports = {
     description: 'Displays song\'s lyrics',
     usage: `${prefix}lyrics <song>`,
     category: 'util',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['text']
 },
 
 run: async (client, message, args) => {

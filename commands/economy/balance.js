@@ -11,7 +11,7 @@ module.exports = {
     usage: `${prefix}balance [user]`,
     category: 'economy',
     access: 'everyone',
-    aliases: ['bal']
+    aliases: ['bal', 'coins']
 },
 
 run: async (client, message, args) => {

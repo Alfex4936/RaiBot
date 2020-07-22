@@ -11,7 +11,7 @@ module.exports = {
     usage: `${prefix}owoify <text>`,
     category: 'text',
     access: 'everyone',
-    aliases: ['owo']
+    aliases: ['owo', 'uwu']
 },
 
 run: async (client, message, args) => {

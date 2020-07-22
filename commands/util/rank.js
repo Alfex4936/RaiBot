@@ -10,8 +10,8 @@ const canva = new Canvacord();
 module.exports = {
     config: {
     name: 'rank',
-    description: 'Displays user\'s profile',
-    usage: `${prefix}profile [user]`,
+    description: 'Displays user\'s rank',
+    usage: `${prefix}rank [user]`,
     category: 'utility',
     access: 'everyone',
     aliases: ['profile', 'prf']

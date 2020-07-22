@@ -10,6 +10,7 @@ module.exports = {
     usage: `${prefix}bondage`,
     category: 'nsfw',
     access: 'everyone',
+    aliases: ['bdsm'],
     nsfw: true
 },
 

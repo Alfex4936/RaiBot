@@ -11,7 +11,7 @@ module.exports = {
     usage: `${prefix}instagram <username>`,
     category: 'stats',
     access: 'everyone',
-    aliases: ['ig']
+    aliases: ['ig', 'insta', 'gram']
 },
 
 run: async (client, message, args) => {

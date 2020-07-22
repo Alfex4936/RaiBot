@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 module.exports = {
     config: {
     name: 'feet',
-    description: 'F E E T',
+    description: 'Shows some feet',
     usage: `${prefix}feet`,
     category: 'nsfw',
     access: 'everyone',

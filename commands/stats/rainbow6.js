@@ -12,7 +12,7 @@ module.exports = {
     usage: `${prefix}rainbow6 <username> <platform> <region>`,
     category: 'stats',
     access: 'everyone',
-    aliases: ['r6']
+    aliases: ['r6', 'r6s']
 },
 
 run: async (client, message, args) => {

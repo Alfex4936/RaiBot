@@ -10,7 +10,7 @@ module.exports = {
     usage: `${prefix}leave`,
     category: 'music',
     access: 'everyone',
-    aliases: ['stop']
+    aliases: ['stop', 'disconnect', 'disc']
 },
 
 run: async (client, message, args) => {

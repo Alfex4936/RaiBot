@@ -12,7 +12,8 @@ module.exports = {
     description: 'Displays information about Steam account',
     usage: `${prefix}steam <custom id>`,
     category: 'stats',
-    access: 'everyone'
+    access: 'everyone',
+    aliases: ['st']
 },
 
 run: async (client, message, args) => {

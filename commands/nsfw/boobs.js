@@ -10,6 +10,7 @@ module.exports = {
     usage: `${prefix}boobs`,
     category: 'nsfw',
     access: 'everyone',
+    aliases: ['tits'],
     nsfw: true
 },
 

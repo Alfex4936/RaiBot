@@ -7,7 +7,7 @@ const db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE);
 module.exports = {
     config: {
     name: 'logs',
-    description: 'Sets modlogs channel',
+    description: 'Sets mod-logs channel for your server',
     usage: `${prefix}logs`,
     category: 'config',
     access: 'everyone',
