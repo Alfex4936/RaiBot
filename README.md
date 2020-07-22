@@ -20,7 +20,7 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 
 ## Features
 - Currency system
-- XP system
+- XP & rank system
 - Fun commands
 - Music
 - NSFW commands
