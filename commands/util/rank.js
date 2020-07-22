@@ -12,7 +12,7 @@ module.exports = {
     name: 'rank',
     description: 'Displays user\'s rank',
     usage: `${prefix}rank [user]`,
-    category: 'utility',
+    category: 'util',
     access: 'everyone',
     aliases: ['profile', 'prf']
 },
