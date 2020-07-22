@@ -8,7 +8,7 @@ module.exports = client => {
 
     client.user.setActivity(`${prefix}help`, { type: 'PLAYING'})
     let db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE | sqlite.OPEN_CREATE);
-    db.run('CREATE TABLE IF NOT EXISTS xp(username TEXT, userid INTEGER, xp INTEGER, level INTEGER)')
+    db.run('CREATE TABLE IF NOT EXISTS xp(username TEXT, userid INTEGER, xp INTEGER, level INTEGER, rank INTEGER)')
     db.run('CREATE TABLE IF NOT EXISTS coins(username TEXT, userid INTEGER, coins INTEGER)')
     db.run('CREATE TABLE IF NOT EXISTS messages(username TEXT, userid INTEGER, global INTEGER)')
     db.run('CREATE TABLE IF NOT EXISTS config(guildname TEXT, guildid INTEGER, channelname TEXT, channelid INTEGER, type TEXT)')

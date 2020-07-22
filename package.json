@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "async": "^3.2.0",
+    "canvacord": "^3.0.9",
     "canvas": "^2.6.1",
     "common-tags": "^1.8.0",
     "discord.js": "^12.0.0",

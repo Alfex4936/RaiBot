@@ -54,23 +54,32 @@ client.on('message', message => {
           return;
       }
       if (row === undefined) {
-        let insertdata = db.prepare('INSERT INTO xp VALUES(?,?,?,?)');
-        insertdata.run(username, userid, 1, 1)
+        let insertdata = db.prepare('INSERT INTO xp VALUES(?,?,?,?,?)');
+        insertdata.run(username, userid, 0, 0, 0)
         return;
       } else {
 
-        let currentXp = row.xp
-        let currentLvl = row.level
+        let currentXp = row.xp;
+        let currentLvl = row.level;
+        let currentRank = row.rank;
         let nxtLvl = row.level * 500;
+
         db.run('UPDATE xp SET xp = ? WHERE userid = ?', [currentXp + xpAdd, userid])
 
         if (nxtLvl <= currentXp) {
           db.run('UPDATE xp SET level = ? WHERE userid = ?', [currentLvl + 1, userid])
           const lvlEmbed = new MessageEmbed()
           .setTitle(`Congrats, ${message.author.username}! You are now level ${currentLvl + 1}.`)
-          .setColor(colours.lime)
+          .setColor(colours.white)
           message.channel.send(lvlEmbed)
 
+          if ((currentLvl + 1).toString().endsWith('1')) {
+            db.run('UPDATE xp SET rank = ? WHERE userid = ?', [currentRank + 1, userid])
+            const rankEmbed = new MessageEmbed()
+            .setTitle(`Congrats, ${message.author.username}! You are now rank ${currentRank + 1}.`)
+            .setColor(colours.white)
+            message.channel.send(rankEmbed)
+          };
         };
       };
     });
