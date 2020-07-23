@@ -9,7 +9,7 @@ module.exports = {
     name: 'leaderboard',
     description: 'Displays top 10 users with the most coins / xp',
     usage: `${prefix}leaderboard <coins | xp>`,
-    category: 'economy',
+    category: 'util',
     access: 'everyone',
     aliases: ['lb', 'top', 'top10', 'board']
 },
