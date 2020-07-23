@@ -12,7 +12,6 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 - [Copyright](#copyright)
 - [Features](#features)
 - [Planned Features](#planned-features)
-- [Invite](#invite)
 - [Fun Information](#fun-information)
 
 ## Copyright
@@ -30,10 +29,6 @@ Simple multi-purpose Discord bot made in *[Node.js](https://nodejs.org/en/)* usi
 
 ## Planned Features
 - Valorant stats command *(waiting for API release)*
-
-## Invite
-- [Server](https://discord.gg/KD457qA)
-- [Bot](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)
 
 ## Fun Information
 - 60+ commands
