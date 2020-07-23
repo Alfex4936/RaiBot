@@ -21,7 +21,6 @@ run: async (client, message, args) => {
     .setColor(colours.default)
     .setDescription(stripIndents`
     ❯ **Owner:** ${owner.tag}
-    ❯ [Invite](https://discord.com/oauth2/authorize?client_id=668244314718994465&scope=bot&permissions=8)
     ❯ [Server](https://discord.gg/KD457qA)
     ❯ [Repository](https://github.com/Raiwex/RaiBot)
     `)

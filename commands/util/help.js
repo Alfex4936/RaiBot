@@ -22,7 +22,7 @@ run: async (client, message, args) => {
     const embed = new MessageEmbed()
     .setAuthor(`${client.user.username} Help ✨`, client.user.displayAvatarURL())
     .setColor(colours.default)
-    .setDescription('Use **r!** before each command!')
+    .setDescription('To view the commands inside a category use \`r!help <category>\`')
     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL())
     .setTimestamp()
 
@@ -38,9 +38,7 @@ run: async (client, message, args) => {
         \`restricted        :\` Bot owner only
         \`stats             :\` Game and Social sites stats
         \`text              :\` Text manipulation
-        \`util              :\` Useful utilities
-
-        To view the commands inside a category use \`r!help <category>\`
+        \`util              :\` Useful utilities  
         `)
 
         return message.channel.send(embed);

@@ -31,7 +31,7 @@ run: async (client, message, args) => {
     });
 
     let input = args.join(' ')
-    if (args[0] === 'gaming') {
+    if (args[0] === 'raiwex') {
         input = 'https://www.youtube.com/playlist?list=PLb8VSR0m9OlvutB6HdovgWSIdZBI5nvd-'
     }
 
