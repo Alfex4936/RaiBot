@@ -6,7 +6,10 @@ const sqlite = require('sqlite3').verbose();
 module.exports = client => {
     console.log(`[${moment().format('M/D/YYYY h:mm a')}] ${client.user.username} is online.`);
 
-    client.user.setActivity(`${prefix}help`, { type: 'PLAYING'})
+    setInterval(() => {
+        client.user.setActivity(`${prefix}help`, { type: 'PLAYING'})
+    }, 300000)
+
     let db = new sqlite.Database('./raibot.db', sqlite.OPEN_READWRITE | sqlite.OPEN_CREATE);
     db.run('CREATE TABLE IF NOT EXISTS xp(username TEXT, userid INTEGER, xp INTEGER, level INTEGER, rank INTEGER)')
     db.run('CREATE TABLE IF NOT EXISTS coins(username TEXT, userid INTEGER, coins INTEGER)')
